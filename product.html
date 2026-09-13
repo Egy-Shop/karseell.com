@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Karseell</title>
+<meta name="description" id="pageDescription" content="">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="product.css">
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1751524826109438');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1751524826109438&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+
+<body>
+
+<!-- Promo Bar -->
+<div class="promo-bar">
+  خصومات حقيقية حتى 70% 🔥 وشحن مجاني للطلبات فوق 1000 جنيه
+</div>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <button type="button" class="hamburger-btn" id="hamburgerBtn" aria-label="القائمة">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html"><img src="assets/logo.png" alt="Karseell" class="logo-img"></a>
+    <a href="#order" class="btn btn-small">اطلبي دلوقتي</a>
+  </div>
+</header>
+
+<div class="side-menu-overlay" id="sideMenuOverlay"></div>
+<nav class="side-menu" id="sideMenu">
+  <button type="button" class="side-menu-close" id="sideMenuClose" aria-label="قفل القائمة">×</button>
+  <img src="assets/logo.png" alt="Karseell" class="side-menu-logo">
+  <a href="index.html" class="side-menu-link">الرئيسية</a>
+  <a href="index.html#offers" class="side-menu-link">العروض</a>
+  <a href="index.html#features" class="side-menu-link">المميزات والمراجعات</a>
+  <a href="https://www.facebook.com/karseell.original.egypt/" target="_blank" rel="noopener" class="side-menu-link">تواصل معنا</a>
+</nav>
+
+<!-- Product hero -->
+<section class="product-hero">
+  <div class="wrap product-hero-grid">
+
+    <!-- Gallery -->
+    <div class="product-gallery">
+      <div class="product-gallery-main">
+        <img id="mainImage" src="" alt="">
+        <span class="out-of-stock-badge" id="outOfStockBadge" hidden>نفدت الكمية حاليًا</span>
+      </div>
+      <div class="product-gallery-thumbs" id="galleryThumbs"></div>
+    </div>
+
+    <!-- Info -->
+    <div class="product-info">
+      <p class="product-eyebrow" id="productEyebrow"></p>
+      <h1 id="productName"></h1>
+      <p class="product-rating">
+        <span class="stars">★★★★★</span>
+        <span id="productRatingText"></span>
+      </p>
+      <p class="product-desc" id="productDesc"></p>
+
+      <div class="product-price-block" id="productPriceBlock">
+        <span class="price-new" id="productPriceNew"></span>
+        <span class="price-old" id="productPriceOld"></span>
+        <span class="discount-badge" id="productDiscountBadge"></span>
+      </div>
+      <p class="product-shipping-note" id="productShippingNote"></p>
+
+      <ul class="product-feature-list" id="productFeatureList"></ul>
+
+      <div class="product-cta-group" id="productCtaGroup">
+        <a href="#order" class="btn btn-primary btn-full">اطلبي الآن</a>
+      </div>
+
+      <div class="product-out-of-stock-msg" id="outOfStockMsg" hidden>
+        <p>المنتج غير متاح للطلب حاليًا، هيتوفر قريبًا. تابعينا على فيسبوك عشان تعرفي أول ما يرجع.</p>
+        <a href="https://www.facebook.com/karseell.original.egypt/" target="_blank" rel="noopener" class="btn btn-outline">تابعينا على فيسبوك</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How to use -->
+<section class="product-howto" id="productHowtoSection">
+  <div class="wrap">
+    <h2 class="section-title">طريقة الاستخدام</h2>
+    <div class="steps" id="productSteps"></div>
+    <p class="howto-tip" id="howtoTip"></p>
+  </div>
+</section>
+
+<!-- Ingredients -->
+<section class="product-ingredients" id="productIngredientsSection">
+  <div class="wrap">
+    <h2 class="section-title">مكونات أساسية</h2>
+    <div class="ingredients-grid" id="ingredientsGrid"></div>
+  </div>
+</section>
+
+<!-- Before / After -->
+<section class="product-before-after" id="beforeAfterSection">
+  <div class="wrap">
+    <h2 class="section-title">قبل وبعد الاستخدام</h2>
+    <div class="before-after-grid" id="beforeAfterGrid"></div>
+  </div>
+</section>
+
+<!-- Reviews (shared real screenshots) -->
+<section class="product-reviews">
+  <div class="wrap">
+    <h2 class="section-title">آراء عميلاتنا</h2>
+    <div class="review-grid">
+      <div class="review-shot-card"><img src="assets/reviews/review1.webp" alt="رسالة عميلة تؤكد وصول واستلام الطلب" loading="lazy"></div>
+      <div class="review-shot-card"><img src="assets/reviews/review2.webp" alt="رأي عميلة عن نتيجة المنتج على شعرها" loading="lazy"></div>
+      <div class="review-shot-card"><img src="assets/reviews/review3.webp" alt="عميلة تشكر على جودة المنتج والتعامل" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Order form -->
+<section class="order" id="order">
+  <div class="wrap">
+    <h2 class="section-title">اطلبي دلوقتي</h2>
+    <p class="order-sub" id="orderProductLabel"></p>
+
+    <form id="orderForm" class="order-form" novalidate>
+      <label>
+        الاسم بالكامل
+        <input type="text" name="name" required placeholder="اكتبي اسمك">
+      </label>
+
+      <label>
+        رقم الموبايل
+        <input type="tel" name="phone" required pattern="^01[0-9]{9}$" placeholder="01xxxxxxxxx">
+      </label>
+
+      <label>
+        المحافظة
+        <select name="governorate" required>
+          <option value="" disabled selected>اختاري المحافظة</option>
+          <option>القاهرة</option><option>الجيزة</option><option>الإسكندرية</option>
+          <option>القليوبية</option><option>الدقهلية</option><option>الشرقية</option>
+          <option>الغربية</option><option>المنوفية</option><option>البحيرة</option>
+          <option>كفر الشيخ</option><option>دمياط</option><option>بورسعيد</option>
+          <option>الإسماعيلية</option><option>السويس</option><option>شمال سيناء</option>
+          <option>جنوب سيناء</option><option>الفيوم</option><option>بني سويف</option>
+          <option>المنيا</option><option>أسيوط</option><option>سوهاج</option>
+          <option>قنا</option><option>الأقصر</option><option>أسوان</option>
+          <option>البحر الأحمر</option><option>الوادي الجديد</option><option>مطروح</option>
+        </select>
+      </label>
+
+      <label>
+        العنوان بالتفصيل
+        <textarea name="address" required placeholder="الحي، الشارع، رقم العمارة..."></textarea>
+      </label>
+
+      <div class="order-summary" id="orderSummary" hidden>
+        <h3>مراجعة الطلب قبل التأكيد</h3>
+        <div class="summary-row">
+          <span>المنتج</span>
+          <span id="summaryOfferName">-</span>
+        </div>
+        <div class="summary-row">
+          <span>الكمية</span>
+          <span class="qty-stepper">
+            <button type="button" class="qty-btn" id="qtyMinus" aria-label="تقليل الكمية">−</button>
+            <span id="qtyValue">1</span>
+            <button type="button" class="qty-btn" id="qtyPlus" aria-label="زيادة الكمية">+</button>
+          </span>
+        </div>
+        <div class="summary-row">
+          <span>السعر</span>
+          <span id="summaryPrice">-</span>
+        </div>
+        <div class="summary-row">
+          <span>نسبة الخصم</span>
+          <span id="summaryDiscount">-</span>
+        </div>
+        <div class="summary-row">
+          <span>مصاريف الشحن</span>
+          <span id="summaryShipping">-</span>
+        </div>
+
+        <div class="coupon-block">
+          <label for="couponInput">عندك كود خصم؟</label>
+          <div class="coupon-input-group">
+            <input type="text" id="couponInput" placeholder="اكتبي الكود هنا">
+            <button type="button" class="btn btn-outline btn-small" id="applyCouponBtn">تفعيل الكود</button>
+          </div>
+          <p id="couponMessage" class="coupon-message"></p>
+        </div>
+
+        <div class="summary-row summary-total">
+          <span>الإجمالي</span>
+          <span id="summaryTotal">-</span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-full" id="submitOrderBtn">تأكيد الطلب</button>
+      <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<!-- Related products -->
+<section class="related-products">
+  <div class="wrap">
+    <h2 class="section-title">منتجات تانية تعجبك</h2>
+    <div class="related-grid" id="relatedGrid"></div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="social-links">
+      <a href="https://www.facebook.com/karseell.original.egypt" target="_blank" rel="noopener" aria-label="Karseell على فيسبوك">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06c0 5 3.66 9.16 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.89h2.78l-.44 2.91h-2.34V22c4.78-.78 8.44-4.94 8.44-9.94z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/karseell_egypt1/" target="_blank" rel="noopener" aria-label="Karseell على انستقرام">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.22.6 1.77 1.15.55.55.89 1.11 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43-.26.66-.6 1.22-1.15 1.77-.55.55-1.11.89-1.77 1.15-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47-.66-.26-1.22-.6-1.77-1.15-.55-.55-.89-1.11-1.15-1.77-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.22 1.15-1.77.55-.55 1.11-.89 1.77-1.15.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2zm0 5a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.25A3.25 3.25 0 1 1 12 8.75a3.25 3.25 0 0 1 0 6.5zm5.5-8.5a1.17 1.17 0 1 1 0-2.34 1.17 1.17 0 0 1 0 2.34z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@karseell_egypt" target="_blank" rel="noopener" aria-label="Karseell على تيك توك">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M16.5 2h-3.2v13.7c0 1.5-1.2 2.7-2.7 2.7s-2.7-1.2-2.7-2.7 1.2-2.7 2.7-2.7c.3 0 .6.05.85.13v-3.3c-.28-.04-.56-.06-.85-.06-3 0-5.4 2.4-5.4 5.4s2.4 5.4 5.4 5.4 5.4-2.4 5.4-5.4V8.9c1.1.8 2.4 1.27 3.8 1.27V6.97c-1.83 0-3.35-1.47-3.35-3.3V2z"/></svg>
+      </a>
+    </div>
+    <p>Karseell &copy; <span id="year"></span> — للتواصل والاستفسار عبر <a href="https://www.facebook.com/karseell.original.egypt/" target="_blank" rel="noopener">رسائل الصفحة</a></p>
+  </div>
+</footer>
+
+<!-- Sticky mobile CTA -->
+<div class="mobile-sticky-cta">
+  <a href="#order" class="btn btn-primary btn-full" id="stickyCtaBtn">اطلبي دلوقتي بخصم يصل لـ 70% 🔥</a>
+</div>
+
+<script src="product.js"></script>
+</body>
+</html>

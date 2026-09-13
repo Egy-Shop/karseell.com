@@ -32,7 +32,7 @@ const PRODUCTS = {
       'نعومة حريرية وتقليل الهيشان',
       'آمن على الشعر المصبوغ والمعالج كيميائيًا'
     ],
-    images: ['assets/products/mask/mask.webp', 'assets/products/mask/mask-jar-clean.webp', 'assets/products/mask/mask-jar-texture.webp', 'assets/products/mask/mask-strengthen-repair.webp', 'assets/products/mask/mask-hero-banner.webp'],
+    images: ['assets/mask.webp', 'assets/mask-jar-clean.webp', 'assets/mask-jar-texture.webp', 'assets/mask-strengthen-repair.webp', 'assets/mask-hero-banner.webp'],
     steps: [
       { title: 'التنظيف', text: 'اغسلي شعرك بالشامبو واشطفيه كويس، شيلي المياه الزيادة برفق' },
       { title: 'التطبيق', text: 'وزّعي الماسك بالتساوي على منتصف الشعر والأطراف' },
@@ -41,7 +41,7 @@ const PRODUCTS = {
     ],
     howtoTip: 'نصيحة: وزّعي الماسك بمشط واسع الأسنان ولفي شعرك بمنشفة دافية لنتيجة أعمق',
     ingredients: ['كولاجين محلل', 'خلاصة الماكا', 'زيت الأرجان', 'كيراتين محلل', 'زبدة الشيا', 'بانثينول'],
-    beforeAfter: ['assets/products/mask/mask-before-after-1.webp', 'assets/products/mask/mask-before-after-2.webp'],
+    beforeAfter: ['assets/mask-before-after-1.webp', 'assets/mask-before-after-2.webp'],
     inStock: true
   },
 
@@ -60,7 +60,7 @@ const PRODUCTS = {
       'يزود الشعر حجم وكثافة',
       'تنعيم ولمعان طبيعي'
     ],
-    images: ['assets/products/duo/duo.webp', 'assets/products/duo/duo-main.webp', 'assets/products/duo/duo-repair-tagline.webp', 'assets/products/duo/duo-set-box.webp'],
+    images: ['assets/duo.webp', 'assets/duo-main.webp', 'assets/duo-repair-tagline.webp', 'assets/duo-set-box.webp'],
     steps: [
       { title: 'الشامبو', text: 'وزّعيه على شعر وفروة رأس مبللة، دلكي برفق لحد ما تعمل رغوة، اشطفي كويس' },
       { title: 'البلسم', text: 'حطيه من نص الشعر للأطراف (بعيد عن فروة الرأس)، سيبيه 1-3 دقايق، اشطفيه' },
@@ -68,7 +68,7 @@ const PRODUCTS = {
     ],
     howtoTip: 'للاستخدام اليومي أو كل يوم بالتبادل حسب نوع شعرك',
     ingredients: ['كولاجين', 'خلاصة الماكا', 'زيت الأرجان', 'خالي من الكبريتات والبارابين'],
-    beforeAfter: ['assets/products/duo/duo-before-after.webp'],
+    beforeAfter: ['assets/duo-before-after.webp'],
     inStock: true
   },
 
@@ -87,7 +87,7 @@ const PRODUCTS = {
       'شحن مجاني دايمًا مهما كانت الكمية',
       'مناسب لكل أنواع الشعر'
     ],
-    images: ['assets/products/full/bundle.webp'],
+    images: ['assets/bundle.webp'],
     steps: [
       { title: 'الشامبو', text: 'اغسلي شعرك بشامبو Karseell ودلكي فروة الرأس برفق' },
       { title: 'البلسم', text: 'وزّعي البلسم من النص للأطراف واتركيه 2-3 دقائق قبل الشطف' },
@@ -114,7 +114,7 @@ const PRODUCTS = {
       'تقليل الهيشان والشعر الطائر',
       'حماية من الحرارة وتقوية الشعرة'
     ],
-    images: ['assets/products/serum/serum-main.webp', 'assets/products/serum/serum-hero-text.webp', 'assets/products/serum/serum-lightweight.webp', 'assets/products/serum/serum-revitalize.webp'],
+    images: ['assets/serum-main.webp', 'assets/serum-hero-text.webp', 'assets/serum-lightweight.webp', 'assets/serum-revitalize.webp'],
     steps: [
       { title: 'كعلاج مكثف', text: 'حطي كام قطرة على شعر مبلل بالمنشفة، وسيبيه من غير شطف' },
       { title: 'كمنعّم يومي', text: 'وزّعي كمية بسيطة على الأطراف لتهدئة الهيشان وزيادة اللمعان' },
@@ -122,8 +122,8 @@ const PRODUCTS = {
     ],
     howtoTip: 'قليل منه بيكفي — ابدئي بكمية بسيطة وزوّدي حسب طول شعرك',
     ingredients: ['زيت الأرجان المغربي', 'فيتامين E', 'أحماض دهنية أساسية', 'خلاصة نباتية طبيعية', 'زيت جوز الهند'],
-    beforeAfter: ['assets/products/serum/serum-before-after1.webp', 'assets/products/serum/serum-before-after2.webp'],
-    video: 'assets/products/serum/serum-video.webm',
+    beforeAfter: ['assets/serum-before-after1.webp', 'assets/serum-before-after2.webp'],
+    video: 'assets/serum-video.webm',
     inStock: false
   }
 };

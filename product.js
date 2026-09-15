@@ -42,6 +42,8 @@ const PRODUCTS = {
     howtoTip: 'نصيحة: وزّعي الماسك بمشط واسع الأسنان ولفي شعرك بمنشفة دافية لنتيجة أعمق',
     ingredients: ['كولاجين محلل', 'خلاصة الماكا', 'زيت الأرجان', 'كيراتين محلل', 'زبدة الشيا', 'بانثينول'],
     beforeAfter: ['assets/mask-before-after-1.webp', 'assets/mask-before-after-2.webp'],
+    video: 'assets/mask-video.webm',
+    hairTypes: ['مفرود', 'مموّج', 'كيرلي', 'أفريقي كثيف'],
     inStock: true
   },
 
@@ -69,6 +71,8 @@ const PRODUCTS = {
     howtoTip: 'للاستخدام اليومي أو كل يوم بالتبادل حسب نوع شعرك',
     ingredients: ['كولاجين', 'خلاصة الماكا', 'زيت الأرجان', 'خالي من الكبريتات والبارابين'],
     beforeAfter: ['assets/duo-before-after.webp'],
+    video: 'assets/duo-video.webm',
+    noNasties: ['بدون بارابين', 'بدون كبريتات', 'بدون فثالات', 'بدون إضافات صناعية', 'بدون قسوة على الحيوانات'],
     inStock: true
   },
 
@@ -204,6 +208,32 @@ product.ingredients.forEach(function (ing) {
   div.textContent = ing;
   ingredientsGrid.appendChild(div);
 });
+
+// Hair types (mask only)
+if (product.hairTypes && product.hairTypes.length) {
+  const hairTypesSection = document.getElementById('hairTypesSection');
+  const hairTypesGrid = document.getElementById('hairTypesGrid');
+  hairTypesSection.hidden = false;
+  product.hairTypes.forEach(function (type) {
+    const div = document.createElement('div');
+    div.className = 'hairtype-chip';
+    div.textContent = type;
+    hairTypesGrid.appendChild(div);
+  });
+}
+
+// No nasties checklist (duo only)
+if (product.noNasties && product.noNasties.length) {
+  const noNastiesSection = document.getElementById('noNastiesSection');
+  const noNastiesGrid = document.getElementById('noNastiesGrid');
+  noNastiesSection.hidden = false;
+  product.noNasties.forEach(function (item) {
+    const div = document.createElement('div');
+    div.className = 'no-nasty-item';
+    div.textContent = '✕ ' + item;
+    noNastiesGrid.appendChild(div);
+  });
+}
 
 // Before/after
 const beforeAfterSection = document.getElementById('beforeAfterSection');

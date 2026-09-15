@@ -14,6 +14,16 @@ sideMenuOverlay.addEventListener('click', closeSideMenu);
 document.querySelectorAll('.side-menu-link').forEach(function (link) { link.addEventListener('click', closeSideMenu); });
 
 // =====================================================================
+// STOCK — single source of truth so the bundle can never show more
+// stock than its most limited component.
+// =====================================================================
+const STOCK = {
+  mask: 22,
+  duo: 15
+};
+STOCK.full = Math.min(STOCK.mask, STOCK.duo);
+
+// =====================================================================
 // PRODUCT DATA — edit this object to change any product's content
 // =====================================================================
 const PRODUCTS = {
@@ -182,6 +192,13 @@ document.getElementById('productShippingNote').textContent = product.price >= FR
   ? 'شحن مجاني'
   : '+ ' + SHIPPING_FEE + ' جنيه شحن (مجاني من عبوتين)';
 
+// Stock note (moved here from the homepage offer cards to keep those shorter)
+if (product.inStock && STOCK[productId] !== undefined) {
+  const stockNote = document.getElementById('productStockNote');
+  stockNote.hidden = false;
+  stockNote.innerHTML = '⚡ متبقي <span class="stock-count">' + STOCK[productId] + '</span> قطع بس من الكمية الحالية';
+}
+
 // Feature list
 const featureListEl = document.getElementById('productFeatureList');
 product.features.forEach(function (f) {
@@ -286,6 +303,17 @@ Object.keys(PRODUCTS).forEach(function (id) {
 });
 
 // =====================================================================
+// Sticky mobile CTA — always reflects THIS product's real discount,
+// and switches to "+ free shipping" the moment the cart qualifies.
+// =====================================================================
+const stickyCtaBtn = document.getElementById('stickyCtaBtn');
+function updateStickyCta(isFreeShipping) {
+  if (!stickyCtaBtn) return;
+  stickyCtaBtn.textContent = 'اطلبي دلوقتي بخصم ' + product.discountPercent + '%' + (isFreeShipping ? ' وشحن مجاني' : '');
+}
+if (product.inStock) updateStickyCta(product.price >= FREE_SHIPPING_THRESHOLD);
+
+// =====================================================================
 // Order logic (single-product version of the main site's cart logic)
 // =====================================================================
 if (product.inStock) {
@@ -332,6 +360,8 @@ if (product.inStock) {
     const subtotal = totals.lineTotal + totals.shipping;
     const total = couponApplied ? Math.round(subtotal * (1 - COUPON_DISCOUNT)) : subtotal;
     summaryTotal.textContent = total + ' جنيه';
+
+    updateStickyCta(totals.shipping === 0);
   }
 
   qtyMinus.addEventListener('click', function () { if (quantity > 1) { quantity -= 1; updateSummary(); } });

@@ -42,9 +42,15 @@ src="https://www.facebook.com/tr?id=1751524826109438&ev=PageView&noscript=1"
 <!-- Header -->
 <header class="site-header">
   <div class="wrap header-inner">
-    <button type="button" class="hamburger-btn" id="hamburgerBtn" aria-label="القائمة">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="header-start">
+      <button type="button" class="hamburger-btn" id="hamburgerBtn" aria-label="القائمة">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="index.html" class="home-link">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+        <span>الرئيسية</span>
+      </a>
+    </div>
     <a href="index.html"><img src="assets/logo.png" alt="Karseell" class="logo-img"></a>
     <a href="#order" class="btn btn-small">اطلبي دلوقتي</a>
   </div>
@@ -89,6 +95,7 @@ src="https://www.facebook.com/tr?id=1751524826109438&ev=PageView&noscript=1"
         <span class="discount-badge" id="productDiscountBadge"></span>
       </div>
       <p class="product-shipping-note" id="productShippingNote"></p>
+      <p class="stock-left" id="productStockNote" hidden></p>
 
       <ul class="product-feature-list" id="productFeatureList"></ul>
 
@@ -272,7 +279,7 @@ src="https://www.facebook.com/tr?id=1751524826109438&ev=PageView&noscript=1"
 
 <!-- Sticky mobile CTA -->
 <div class="mobile-sticky-cta">
-  <a href="#order" class="btn btn-primary btn-full" id="stickyCtaBtn">اطلبي دلوقتي بخصم يصل لـ 70% 🔥</a>
+  <a href="#order" class="btn btn-primary btn-full" id="stickyCtaBtn">اطلبي دلوقتي</a>
 </div>
 
 <script src="product.js"></script>

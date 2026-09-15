@@ -137,6 +137,25 @@ ul{ margin:0; padding:0; list-style:none; }
   width: auto;
 }
 
+/* ---- optional "back to home" link shown next to the hamburger (product pages) ---- */
+.header-start{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+.home-link{
+  display:flex;
+  align-items:center;
+  gap: 5px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--emerald-deep);
+  white-space: nowrap;
+}
+.home-link:hover{ color: var(--emerald); }
+.home-link svg{ flex-shrink: 0; }
+
 /* ============ Hamburger + side menu ============ */
 .hamburger-btn{
   background: none;
@@ -928,18 +947,26 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .mobile-sticky-cta{
   display: none;
 }
+.mobile-sticky-cta .btn{
+  box-shadow: 0 10px 26px rgba(74,18,32,.38);
+  animation: stickyCtaGlow 2.6s ease-in-out infinite;
+}
+@keyframes stickyCtaGlow{
+  0%, 100%{ box-shadow: 0 10px 26px rgba(74,18,32,.38), 0 0 0 0 rgba(199,154,59,.5); }
+  50%{ box-shadow: 0 10px 26px rgba(74,18,32,.38), 0 0 0 9px rgba(199,154,59,0); }
+}
+@media (prefers-reduced-motion: reduce){
+  .mobile-sticky-cta .btn{ animation: none; }
+}
 
 @media (max-width: 860px){
   .hero{ min-height: 420px; padding: 40px 0; align-items: center; }
-  .hero-overlay{ background: linear-gradient(to top, rgba(10,6,6,.75) 0%, rgba(10,6,6,.55) 55%, rgba(10,6,6,.35) 100%); }
-  .hero-copy{ max-width: 100%; text-align: center; margin: 0 auto; }
+  .hero-overlay{ background: linear-gradient(to left, rgba(10,6,6,.82) 0%, rgba(10,6,6,.58) 50%, rgba(10,6,6,.22) 85%); }
+  .hero-copy{ max-width: 100%; text-align: right; margin: 0; }
   .review-grid{ grid-template-columns: 1fr 1fr; }
   .verify-grid{ grid-template-columns: 1fr; }
   .info-tabs-nav{ gap: 8px; }
   .info-tab-btn{ font-size: 13px; padding: 8px 14px; }
-  .hero-sub{ margin-inline: auto; }
-  .hero-btn-group{ justify-content: center; }
-  .hero-trust{ justify-content:center; }
   .mobile-sticky-cta{
     display: block;
     position: fixed;
@@ -966,6 +993,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    padding-top: 18px; /* keeps the floating badge (top:-14px) from being clipped, since overflow-x:auto forces overflow-y to auto too */
     padding-bottom: 8px;
     margin: 0 -24px;
     padding-inline: 24px;

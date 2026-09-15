@@ -76,6 +76,74 @@ if (liveViewersEl) {
   }, 4000);
 }
 
+// ---- Offers slider arrows (mobile only; harmless no-op on desktop grid) ----
+(function () {
+  const track = document.getElementById('offerGrid');
+  const prevBtn = document.getElementById('offerPrev');
+  const nextBtn = document.getElementById('offerNext');
+  if (!track || !prevBtn || !nextBtn) return;
+
+  function cardStep() {
+    const firstCard = track.querySelector('.offer-card');
+    if (!firstCard) return track.clientWidth;
+    const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || '0') || 0;
+    return firstCard.getBoundingClientRect().width + gap;
+  }
+
+  function updateArrowState() {
+    const maxScroll = track.scrollWidth - track.clientWidth - 2; // small tolerance
+    // RTL note: scrollLeft is 0 at the visual start (right side) and negative/positive toward the end depending on browser,
+    // so we measure using scrollLeft's absolute distance from both edges instead of assuming a sign.
+    const distanceFromStart = Math.abs(track.scrollLeft);
+    prevBtn.disabled = distanceFromStart <= 2;
+    nextBtn.disabled = distanceFromStart >= Math.abs(maxScroll) - 2 || maxScroll <= 0;
+  }
+
+  function scrollByCard(direction) {
+    // direction: 1 = next (toward the end), -1 = prev (toward the start)
+    // In RTL, "next" visually means scrolling toward negative scrollLeft in most browsers.
+    const amount = cardStep() * direction;
+    track.scrollBy({ left: -amount, behavior: 'smooth' });
+  }
+
+  prevBtn.addEventListener('click', function () {
+    stopPulse();
+    scrollByCard(-1);
+  });
+  nextBtn.addEventListener('click', function () {
+    stopPulse();
+    scrollByCard(1);
+  });
+
+  track.addEventListener('scroll', function () {
+    window.requestAnimationFrame(updateArrowState);
+  }, { passive: true });
+
+  // Gentle pulse on the "next" arrow to hint there's more to see, stops after first interaction
+  function stopPulse() {
+    nextBtn.classList.remove('is-pulsing');
+    track.removeEventListener('scroll', stopPulseOnScroll);
+  }
+  function stopPulseOnScroll() { stopPulse(); }
+
+  function maybeStartPulse() {
+    if (window.matchMedia('(max-width: 860px)').matches) {
+      nextBtn.classList.add('is-pulsing');
+      track.addEventListener('scroll', stopPulseOnScroll, { passive: true });
+    } else {
+      nextBtn.classList.remove('is-pulsing');
+    }
+  }
+
+  window.addEventListener('resize', function () {
+    updateArrowState();
+    maybeStartPulse();
+  });
+
+  updateArrowState();
+  maybeStartPulse();
+})();
+
 // ---- Order summary elements ----
 const orderSummary = document.getElementById('orderSummary');
 const summaryOfferName = document.getElementById('summaryOfferName');

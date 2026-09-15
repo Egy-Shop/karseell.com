@@ -184,68 +184,97 @@ src="https://www.facebook.com/tr?id=1751524826109438&ev=PageView&noscript=1"
   <div class="wrap">
     <h2 class="section-title">اختاري العرض المناسب ليكِ</h2>
     <p class="urgency-banner">🔥 <span id="liveViewers">23</span> شخص بيشوفوا الصفحة دي دلوقتي</p>
-    <div class="offer-grid">
 
-      <div class="offer-card" data-offer="mask">
-        <span class="badge badge-outline">ابدئي بيه</span>
-        <h3>الماسك لوحده</h3>
-        <div class="offer-visual">
-          <img src="assets/mask.webp" alt="ماسك Karseell" class="product-photo">
+    <div class="offer-slider-wrap">
+      <button type="button" class="offer-slider-arrow offer-slider-prev" id="offerPrev" aria-label="العرض السابق">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+
+      <div class="offer-grid" id="offerGrid">
+
+        <div class="offer-card" data-offer="mask">
+          <span class="badge badge-outline">ابدئي بيه</span>
+          <h3>الماسك لوحده</h3>
+          <div class="offer-visual">
+            <img src="assets/mask.webp" alt="ماسك Karseell" class="product-photo">
+          </div>
+          <p class="offer-price"><span class="price-new">599 جنيه</span> <span class="price-old">1268 جنيه</span> <span class="discount-badge">خصم 53%</span></p>
+          <p class="offer-shipping">+ 35 جنيه شحن (مجاني من عبوتين)</p>
+          <ul class="offer-list">
+            <li>ماسك بروتين 500 مل</li>
+            <li>يكفي لأكتر من شهرين استخدام</li>
+          </ul>
+          <p class="stock-left">⚡ متبقي <span class="stock-count">6</span> قطع بس من الكمية الحالية</p>
+          <p class="bundle-hint">🎁 اطلبي عبوتين بـ 999 جنيه بدل 1198 + شحن مجاني</p>
+          <div class="offer-btn-row">
+            <a href="#order" class="btn btn-outline choose-offer" data-offer="mask">اطلبي الآن</a>
+            <a href="product.html?id=mask" class="btn btn-secondary-outline">تفاصيل المنتج</a>
+          </div>
         </div>
-        <p class="offer-price"><span class="price-new">599 جنيه</span> <span class="price-old">1268 جنيه</span> <span class="discount-badge">خصم 53%</span></p>
-        <p class="offer-shipping">+ 35 جنيه شحن (مجاني من عبوتين)</p>
-        <ul class="offer-list">
-          <li>ماسك بروتين 500 مل</li>
-          <li>يكفي لأكتر من شهرين استخدام</li>
-        </ul>
-        <p class="stock-left">⚡ متبقي <span class="stock-count">6</span> قطع بس من الكمية الحالية</p>
-        <p class="bundle-hint">🎁 اطلبي عبوتين بـ 999 جنيه بدل 1198 + شحن مجاني</p>
-        <div class="offer-btn-row">
-          <a href="#order" class="btn btn-outline choose-offer" data-offer="mask">اطلبي الآن</a>
-          <a href="product.html?id=mask" class="btn btn-secondary-outline">تفاصيل المنتج</a>
+
+        <div class="offer-card" data-offer="duo">
+          <span class="badge badge-outline">الأكثر طلبًا</span>
+          <h3>الشامبو + البلسم</h3>
+          <div class="offer-visual">
+            <img src="assets/duo.webp" alt="شامبو وبلسم Karseell" class="product-photo">
+          </div>
+          <p class="offer-price"><span class="price-new">699 جنيه</span> <span class="price-old">2345 جنيه</span> <span class="discount-badge">خصم 70%</span></p>
+          <p class="offer-shipping">+ 35 جنيه شحن (مجاني من عبوتين)</p>
+          <ul class="offer-list">
+            <li>شامبو خالي من الكبريتات</li>
+            <li>بلسم مغذي للاستخدام اليومي</li>
+          </ul>
+          <p class="stock-left">⚡ متبقي <span class="stock-count">9</span> قطع بس من الكمية الحالية</p>
+          <p class="bundle-hint">🎁 اطلبي عبوتين بـ 1300 جنيه بدل 1398 + شحن مجاني</p>
+          <div class="offer-btn-row">
+            <a href="#order" class="btn btn-outline choose-offer" data-offer="duo">اطلبي الآن</a>
+            <a href="product.html?id=duo" class="btn btn-secondary-outline">تفاصيل المنتج</a>
+          </div>
         </div>
+
+        <div class="offer-card recommended" data-offer="full">
+          <span class="badge">الأكثر توفيرًا</span>
+          <h3>الباقة الكاملة</h3>
+          <div class="offer-visual">
+            <img src="assets/bundle.webp" alt="باقة Karseell كاملة: ماسك وشامبو وبلسم" class="product-photo">
+          </div>
+          <p class="offer-price"><span class="price-new">1199 جنيه</span> <span class="price-old">3613 جنيه</span> <span class="discount-badge">خصم 67%</span></p>
+          <p class="offer-shipping offer-shipping-free">شحن مجاني</p>
+          <ul class="offer-list">
+            <li>ماسك + شامبو + بلسم</li>
+            <li>روتين عناية متكامل بخصم أكبر</li>
+          </ul>
+          <p class="stock-left">⚡ متبقي <span class="stock-count">4</span> قطع بس من الكمية الحالية</p>
+          <p class="bundle-hint">🎁 اطلبي 2 باقة بـ 1999 جنيه بدل 2398، شحن مجاني</p>
+          <div class="offer-btn-row">
+            <a href="#order" class="btn btn-outline choose-offer" data-offer="full">اطلبي الآن</a>
+            <a href="product.html?id=full" class="btn btn-secondary-outline">تفاصيل المنتج</a>
+          </div>
+        </div>
+
+        <div class="offer-card" data-offer="serum">
+          <span class="badge badge-outline">قريبًا</span>
+          <h3>سيروم زيت الأرجان المغربي</h3>
+          <div class="offer-visual">
+            <img src="assets/serum-main.webp" alt="سيروم زيت الأرجان من Karseell" class="product-photo">
+          </div>
+          <p class="offer-price"><span class="price-new">1099 جنيه</span> <span class="price-old">2198 جنيه</span> <span class="discount-badge">خصم 50%</span></p>
+          <p class="offer-shipping">ترطيب وتغذية خفيفة بدون ما يحسس شعرك بالتقل</p>
+          <ul class="offer-list">
+            <li>يقلل الهيشان ويرجّع اللمعان</li>
+            <li>حماية من الحرارة وتقوية الشعرة</li>
+          </ul>
+          <p class="stock-left">نفدت الكمية حاليًا — هيتوفر قريبًا</p>
+          <div class="offer-btn-row">
+            <a href="product.html?id=serum" class="btn btn-secondary-outline" style="flex:1;">تفاصيل المنتج</a>
+          </div>
+        </div>
+
       </div>
 
-      <div class="offer-card" data-offer="duo">
-        <span class="badge badge-outline">الأكثر طلبًا</span>
-        <h3>الشامبو + البلسم</h3>
-        <div class="offer-visual">
-          <img src="assets/duo.webp" alt="شامبو وبلسم Karseell" class="product-photo">
-        </div>
-        <p class="offer-price"><span class="price-new">699 جنيه</span> <span class="price-old">2345 جنيه</span> <span class="discount-badge">خصم 70%</span></p>
-        <p class="offer-shipping">+ 35 جنيه شحن (مجاني من عبوتين)</p>
-        <ul class="offer-list">
-          <li>شامبو خالي من الكبريتات</li>
-          <li>بلسم مغذي للاستخدام اليومي</li>
-        </ul>
-        <p class="stock-left">⚡ متبقي <span class="stock-count">9</span> قطع بس من الكمية الحالية</p>
-        <p class="bundle-hint">🎁 اطلبي عبوتين بـ 1300 جنيه بدل 1398 + شحن مجاني</p>
-        <div class="offer-btn-row">
-          <a href="#order" class="btn btn-outline choose-offer" data-offer="duo">اطلبي الآن</a>
-          <a href="product.html?id=duo" class="btn btn-secondary-outline">تفاصيل المنتج</a>
-        </div>
-      </div>
-
-      <div class="offer-card recommended" data-offer="full">
-        <span class="badge">الأكثر توفيرًا</span>
-        <h3>الباقة الكاملة</h3>
-        <div class="offer-visual">
-          <img src="assets/bundle.webp" alt="باقة Karseell كاملة: ماسك وشامبو وبلسم" class="product-photo">
-        </div>
-        <p class="offer-price"><span class="price-new">1199 جنيه</span> <span class="price-old">3613 جنيه</span> <span class="discount-badge">خصم 67%</span></p>
-        <p class="offer-shipping offer-shipping-free">شحن مجاني</p>
-        <ul class="offer-list">
-          <li>ماسك + شامبو + بلسم</li>
-          <li>روتين عناية متكامل بخصم أكبر</li>
-        </ul>
-        <p class="stock-left">⚡ متبقي <span class="stock-count">4</span> قطع بس من الكمية الحالية</p>
-        <p class="bundle-hint">🎁 اطلبي 2 باقة بـ 1999 جنيه بدل 2398، شحن مجاني</p>
-        <div class="offer-btn-row">
-          <a href="#order" class="btn btn-outline choose-offer" data-offer="full">اطلبي الآن</a>
-          <a href="product.html?id=full" class="btn btn-secondary-outline">تفاصيل المنتج</a>
-        </div>
-      </div>
-
+      <button type="button" class="offer-slider-arrow offer-slider-next" id="offerNext" aria-label="العرض التالي">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
     </div>
   </div>
 </section>

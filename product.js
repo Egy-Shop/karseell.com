@@ -278,6 +278,22 @@ if (product.video) {
   document.querySelector('.related-products').insertAdjacentElement('beforebegin', videoSection);
 }
 
+// ---- Live viewer widget (cosmetic urgency element, same behavior as the homepage) ----
+if (product.inStock) {
+  const liveCountEl = document.getElementById('liveViewerCount');
+  if (liveCountEl) {
+    setInterval(function () {
+      const current = parseInt(liveCountEl.textContent, 10) || 20;
+      const change = Math.floor(Math.random() * 5) - 2; // -2 to +2
+      const next = Math.min(41, Math.max(14, current + change));
+      liveCountEl.textContent = next;
+    }, 4000);
+  }
+} else {
+  const widget = document.getElementById('liveViewerWidget');
+  if (widget) widget.hidden = true;
+}
+
 // Out of stock handling
 if (!product.inStock) {
   document.getElementById('outOfStockBadge').hidden = false;

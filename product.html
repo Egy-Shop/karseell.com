@@ -52,7 +52,7 @@ src="https://www.facebook.com/tr?id=1751524826109438&ev=PageView&noscript=1"
       </a>
     </div>
     <a href="index.html"><img src="assets/logo.png" alt="Karseell" class="logo-img"></a>
-    <a href="#order" class="btn btn-small">اطلبي دلوقتي</a>
+    <a href="#order" class="btn btn-small" id="headerOrderBtn">اطلبي دلوقتي</a>
   </div>
 </header>
 
@@ -68,6 +68,12 @@ src="https://www.facebook.com/tr?id=1751524826109438&ev=PageView&noscript=1"
 
 <!-- Product hero -->
 <section class="product-hero">
+  <div class="wrap">
+    <div class="live-viewer-banner" id="liveViewerWidget">
+      <span class="live-dot"></span>
+      <span><span id="liveViewerCount">23</span> شخص بيشوفوا المنتج ده دلوقتي</span>
+    </div>
+  </div>
   <div class="wrap product-hero-grid">
 
     <!-- Gallery -->
@@ -157,26 +163,7 @@ src="https://www.facebook.com/tr?id=1751524826109438&ev=PageView&noscript=1"
   <div class="wrap">
     <p class="reviews-eyebrow">آراء العملاء</p>
     <h2 class="section-title">تجارب حقيقية مع Karseell</h2>
-    <div class="review-grid">
-      <div class="review-card">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">هو بصراحة جميل جدًا... تتهني بيه يا رب.</p>
-        <p class="review-name">Reham Mohamed، طنطا</p>
-        <p class="review-verified">رسالة عميلة حقيقية ✓</p>
-      </div>
-      <div class="review-card">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">شكرًا جدًا، الأوردر وصل وتحفة وبصراحة.</p>
-        <p class="review-name">Rawan Tantawy، أسيوط</p>
-        <p class="review-verified">رسالة عميلة حقيقية ✓</p>
-      </div>
-      <div class="review-card">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">الأوردر وصل والحاجة جميلة جدًا.</p>
-        <p class="review-name">Ganat Abd Alaziz، بني سويف</p>
-        <p class="review-verified">رسالة عميلة حقيقية ✓</p>
-      </div>
-    </div>
+    <div class="review-grid" id="productReviewGrid"></div>
     <div class="reviews-cta">
       <p class="reviews-cta-note">كل التقييمات دي رسائل حقيقية من عميلاتنا</p>
       <a href="https://www.facebook.com/stories/1870958930940400/?source=profile_highlight" target="_blank" rel="noopener" class="btn btn-outline btn-small">شوفي كل التقييمات على فيسبوك</a>
@@ -296,12 +283,6 @@ src="https://www.facebook.com/tr?id=1751524826109438&ev=PageView&noscript=1"
     <p><a href="https://www.jawdaonline.com/egy-request" target="_blank" rel="noopener" class="return-link">طلب استرجاع أو استبدال المنتج</a></p>
   </div>
 </footer>
-
-<!-- Live viewer widget -->
-<div class="live-viewer-widget" id="liveViewerWidget">
-  <span class="live-dot"></span>
-  <span><span id="liveViewerCount">23</span> شخص بيشوفوا المنتج ده دلوقتي</span>
-</div>
 
 <!-- Sticky mobile CTA -->
 <div class="mobile-sticky-cta">

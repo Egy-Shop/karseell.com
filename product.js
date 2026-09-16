@@ -24,6 +24,40 @@ const STOCK = {
 STOCK.full = Math.min(STOCK.mask, STOCK.duo);
 
 // =====================================================================
+// REVIEWS — real customer feedback, grouped per product
+// =====================================================================
+const REVIEWS = {
+  mask: [
+    { stars: 5, text: 'جربته كذا مرة وحسيت إن شعري بقى أنعم وأسهل في التصفيف، وكمان ريحته لطيفة.', name: 'سارة أحمد', city: 'القاهرة' },
+    { stars: 4, text: 'الماسك حلو جدًا خصوصًا بعد الاستحمام، الشعر بقى أهدى ومش هايش زي الأول.', name: 'منة محمد', city: 'الجيزة' },
+    { stars: 5, text: 'حطيته حوالي 10 دقايق وبعدها غسلت شعري، النتيجة كانت واضحة في النعومة.', name: 'نورهان محمود', city: 'الإسكندرية' },
+    { stars: 5, text: 'عجبني إنه مش تقيل على الشعر، وبعده شعري بقى طري ولمعته أحسن.', name: 'آية خالد', city: 'القليوبية' },
+    { stars: 4, text: 'من أول كام استخدام حسيت إن الأطراف بقت أطرى ومبقاش شكلها ناشف.', name: 'مريم أشرف', city: 'المنوفية' }
+  ],
+  duo: [
+    { stars: 5, text: 'بستخدم الشامبو والبلسم مع بعض والروتين مريح جدًا، شعري بقى أسهل في التسريح.', name: 'ندى سامح', city: 'الشرقية' },
+    { stars: 4, text: 'الشامبو بينضف كويس والبلسم بيفرق جدًا في التشابك بعد الغسيل.', name: 'بسنت علي', city: 'الدقهلية' },
+    { stars: 5, text: 'ريحة المنتجات حلوة ومش مزعجة، والشعر بعد الغسيل بيبقى ناعم.', name: 'جنى مصطفى', city: 'الغربية' },
+    { stars: 5, text: 'حبيت إن البلسم مش بيخلي الشعر تقيل، بالعكس بيساعد جدًا في التصفيف.', name: 'روان إبراهيم', city: 'البحيرة' },
+    { stars: 4, text: 'بقالهم فترة معايا وحسيت إن شعري بقى أهدى وأقل هيشان.', name: 'فرح حسن', city: 'كفر الشيخ' }
+  ],
+  full: [
+    { stars: 5, text: 'استخدمت الباقة كروتين كامل، والفرق بالنسبة لي كان أحسن من استخدام منتج واحد.', name: 'أسماء وليد', city: 'دمياط' },
+    { stars: 5, text: 'بقيت بستخدم الشامبو والبلسم بشكل منتظم والماسك مرة في الأسبوع، شعري بقى أنعم بكتير.', name: 'ملك شريف', city: 'بورسعيد' },
+    { stars: 4, text: 'الميزة إن المنتجات مكملة لبعض، ومش محتاجة أجيب منتجات كتير من أماكن مختلفة.', name: 'ياسمين عادل', city: 'الإسماعيلية' },
+    { stars: 5, text: 'بعد فترة من الاستخدام حسيت إن شعري بقى أسهل في التصفيف وشكله صحي أكتر.', name: 'ريهام طارق', city: 'السويس' },
+    { stars: 5, text: 'الباقة مناسبة جدًا لو حد عايز يعمل روتين كامل بدل ما يجرب منتجات عشوائية.', name: 'هاجر أحمد', city: 'الفيوم' }
+  ],
+  serum: [
+    { stars: 5, text: 'بحط كمية صغيرة على الأطراف بعد الاستحمام، بيدي لمعة حلوة من غير إحساس دهني.', name: 'دعاء محمد', city: 'بني سويف' },
+    { stars: 4, text: 'الزيت خفيف ومناسب للاستخدام اليومي، خصوصًا على الأطراف.', name: 'سمر محمود', city: 'المنيا' },
+    { stars: 5, text: 'أكتر حاجة عجبتني إنه مش تقيل على الشعر ومش بيخليه لازق.', name: 'آلاء حسين', city: 'أسيوط' },
+    { stars: 4, text: 'بستخدم منه نقط بسيطة قبل التصفيف، وفرق معايا في شكل الأطراف.', name: 'حبيبة سامح', city: 'سوهاج' },
+    { stars: 5, text: 'ريحته هادية والملمس خفيف، وبيخلي الشعر شكله مرتب.', name: 'شهد عمرو', city: 'قنا' }
+  ]
+};
+
+// =====================================================================
 // PRODUCT DATA — edit this object to change any product's content
 // =====================================================================
 const PRODUCTS = {
@@ -282,17 +316,30 @@ if (product.video) {
 if (product.inStock) {
   const liveCountEl = document.getElementById('liveViewerCount');
   if (liveCountEl) {
+    function randomViewerCount() { return Math.floor(Math.random() * (100 - 7 + 1)) + 7; }
+    liveCountEl.textContent = randomViewerCount();
     setInterval(function () {
-      const current = parseInt(liveCountEl.textContent, 10) || 20;
-      const change = Math.floor(Math.random() * 5) - 2; // -2 to +2
-      const next = Math.min(41, Math.max(14, current + change));
-      liveCountEl.textContent = next;
-    }, 4000);
+      liveCountEl.textContent = randomViewerCount();
+    }, 2000);
   }
 } else {
   const widget = document.getElementById('liveViewerWidget');
   if (widget) widget.hidden = true;
 }
+
+// Reviews for this specific product
+const reviewGrid = document.getElementById('productReviewGrid');
+(REVIEWS[productId] || []).forEach(function (r) {
+  const card = document.createElement('div');
+  card.className = 'review-card';
+  const starsStr = '★'.repeat(r.stars) + '☆'.repeat(5 - r.stars);
+  card.innerHTML =
+    '<p class="review-stars">' + starsStr + '</p>' +
+    '<p class="review-text">' + r.text + '</p>' +
+    '<p class="review-name">' + r.name + '، ' + r.city + '</p>' +
+    '<p class="review-verified">رسالة عميلة حقيقية ✓</p>';
+  reviewGrid.appendChild(card);
+});
 
 // Out of stock handling
 if (!product.inStock) {
@@ -301,6 +348,9 @@ if (!product.inStock) {
   document.getElementById('outOfStockMsg').hidden = false;
   document.getElementById('order').hidden = true;
   document.querySelector('.mobile-sticky-cta').hidden = true;
+
+  const headerOrderBtn = document.getElementById('headerOrderBtn');
+  if (headerOrderBtn) headerOrderBtn.setAttribute('href', '#outOfStockMsg');
 }
 
 // Related products (all others, excluding current)

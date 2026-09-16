@@ -68,12 +68,11 @@ document.querySelectorAll('.info-tab-btn').forEach(function (btn) {
 // ---- Live viewer counter (cosmetic urgency element) ----
 const liveViewersEl = document.getElementById('liveViewers');
 if (liveViewersEl) {
+  function randomViewerCount() { return Math.floor(Math.random() * (100 - 7 + 1)) + 7; }
+  liveViewersEl.textContent = randomViewerCount();
   setInterval(function () {
-    const current = parseInt(liveViewersEl.textContent, 10) || 20;
-    const change = Math.floor(Math.random() * 5) - 2; // -2 to +2
-    const next = Math.min(41, Math.max(14, current + change));
-    liveViewersEl.textContent = next;
-  }, 4000);
+    liveViewersEl.textContent = randomViewerCount();
+  }, 2000);
 }
 
 // ---- Offers slider arrows (mobile only; harmless no-op on desktop grid) ----

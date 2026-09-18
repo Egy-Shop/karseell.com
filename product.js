@@ -442,6 +442,26 @@ const reviewGrid = document.getElementById('productReviewGrid');
   reviewGrid.appendChild(card);
 });
 
+// Customer-submitted reviews the owner has approved (typed "نعم" in the sheet) —
+// fetched live, so a new approval shows up on the site with no code changes needed.
+fetch(GOOGLE_SCRIPT_URL + '?product=' + encodeURIComponent(productId))
+  .then(function (res) { return res.json(); })
+  .then(function (approved) {
+    (approved || []).forEach(function (r) {
+      const starsNum = parseInt(r.stars, 10) || 5;
+      const starsStr = '★'.repeat(starsNum) + '☆'.repeat(5 - starsNum);
+      const card = document.createElement('div');
+      card.className = 'review-card';
+      card.innerHTML =
+        '<p class="review-stars">' + starsStr + '</p>' +
+        '<p class="review-text">' + r.text + '</p>' +
+        '<p class="review-name">' + r.name + '</p>' +
+        '<p class="review-verified">رسالة عميلة حقيقية ✓</p>';
+      reviewGrid.appendChild(card);
+    });
+  })
+  .catch(function () { /* silently ignore — the curated reviews above still show fine */ });
+
 // Out of stock handling
 if (!product.inStock) {
   document.getElementById('outOfStockBadge').hidden = false;

@@ -98,7 +98,24 @@ const PRODUCTS = {
       { title: 'الشطف', text: 'اشطفي كويس وصففي شعرك عادي، كرري 1-2 مرة أسبوعيًا' }
     ],
     howtoTip: 'نصيحة: وزّعي الماسك بمشط واسع الأسنان ولفي شعرك بمنشفة دافية لنتيجة أعمق',
-    ingredients: ['كولاجين محلل', 'خلاصة الماكا', 'زيت الأرجان', 'كيراتين محلل', 'زبدة الشيا', 'بانثينول'],
+    ingredients: [
+      { name: 'كولاجين محلل', desc: 'يدعم قوة الشعرة ومرونتها' },
+      { name: 'خلاصة الماكا', desc: 'تغذي الشعر الجاف والمجهد' },
+      { name: 'زيت الأرجان', desc: 'يحبس الرطوبة ويزود اللمعان' },
+      { name: 'كيراتين محلل', desc: 'يساعد على تنعيم الشعر المسامي والتالف' },
+      { name: 'زبدة الشيا', desc: 'تنعّم الشعر وتحميه من الجفاف' },
+      { name: 'بانثينول', desc: 'يحسّن النعومة وسهولة التصفيف' }
+    ],
+    faq: [
+      { q: 'إزاي أستخدم الماسك عشان أضمن أحسن نتيجة؟', a: 'بعد غسل شعرك بالشامبو، وزّعي كمية كافية على الشعر المبلل من المنتصف للأطراف، مع التركيز على أكتر الأجزاء تضررًا. سيبيه من 5 لـ10 دقايق (ممكن توصل لـ15 دقيقة لو الشعر تالف جدًا)، واشطفيه كويس بمية فاترة.' },
+      { q: 'يناسب أنهي نوع شعر؟', a: 'مناسب لكل أنواع الشعر، وبالذات الجاف والتالف والهايش والكيرلي والمصبوغ والمعالج كيميائيًا.' },
+      { q: 'هل مناسب للشعر الخفيف أو الدقيق؟', a: 'أيوه، التركيبة خفيفة وبتتشرب في الشعرة نفسها بدل ما تقعد على السطح، فمش بتحسس الشعر بالتقل حتى لو كان خفيف.' },
+      { q: 'أستخدمه كام مرة في الأسبوع؟', a: 'الأفضل مرة أو مرتين أسبوعيًا. لو شعرك تالف جدًا ممكن تستخدميه بعد كل غسلة لحد ما تشوفي تحسن، وبعدها ترجعي لمرة أو مرتين.' },
+      { q: 'هو بديل عن البلسم العادي؟', a: 'لأ، ده علاج ترميم عميق بيدخل جوه الشعرة نفسها، بعكس البلسم اللي بينعم السطح بس. النتيجة بتدوم أطول وبتكون أعمق.' },
+      { q: 'آمن على الشعر المصبوغ أو المفرود؟', a: 'أيوه، آمن تمامًا على الشعر المصبوغ والمفرود بالبروتين، وبيساعد يحافظ على لون الصبغة ويقلل من بهتانها بمرور الوقت.' },
+      { q: 'هل الماسك آمن للاستخدام أثناء الحمل؟', a: 'المنتج للاستخدام الخارجي على الشعر فقط. يُنصح بالتركيز على أطراف الشعر وتجنب ملامسة فروة الرأس أثناء الحمل، واستشارة الطبيب لو عندك أي حساسية أو قلق.' },
+      { q: 'هل يصلح للأطفال؟', a: 'المنتج مش مخصص للأطفال تحديدًا. لو حابة تستخدميه لطفلك، يُفضّل استشارة طبيب أطفال الأول، وتجنب ملامسته للعين وفروة الرأس.' }
+    ],
     beforeAfter: ['assets/mask-before-after-1.webp', 'assets/mask-before-after-2.webp'],
     video: 'assets/mask-video.webm',
     hairTypes: ['مفرود', 'مموّج', 'كيرلي', 'أفريقي كثيف'],
@@ -127,7 +144,22 @@ const PRODUCTS = {
       { title: 'النتيجة', text: 'شعر أنعم، أسهل في التسريح، وبلمعان طبيعي بعد الروتين الكامل' }
     ],
     howtoTip: 'للاستخدام اليومي أو كل يوم بالتبادل حسب نوع شعرك',
-    ingredients: ['كولاجين', 'خلاصة الماكا', 'زيت الأرجان', 'خالي من الكبريتات والبارابين'],
+    ingredients: [
+      { name: 'كولاجين', desc: 'يدعم بنية الشعرة وقوتها' },
+      { name: 'خلاصة الماكا', desc: 'تغذي فروة الرأس والشعر المجهد' },
+      { name: 'زيت الأرجان', desc: 'يرطب ويضيف لمعان طبيعي' },
+      { name: 'بروتين محلل', desc: 'يقوي الشعرة ويقلل التقصف' }
+    ],
+    faq: [
+      { q: 'إزاي أستخدم الشامبو والبلسم مع بعض؟', a: 'ابدئي بالشامبو على شعر مبلل، دلكي فروة الرأس برفق لحد ما تعمل رغوة، واشطفي كويس. بعدها حطي البلسم من نص الشعر للأطراف (بعيد عن فروة الرأس)، سيبيه دقيقة لـ3 دقايق، واشطفيه بمية فاترة.' },
+      { q: 'أستخدمهم كام مرة في الأسبوع؟', a: 'مناسبين للاستخدام اليومي أو يوم بعد يوم حسب نوع شعرك، من غير ما يضروا الشعر أو يثقّلوه.' },
+      { q: 'يصلحوا للشعر المصبوغ؟', a: 'أيوه، التركيبة آمنة على الشعر المصبوغ وبتساعد تحافظ على حيوية اللون مع ترطيب حقيقي.' },
+      { q: 'محتاجة أستخدم الاتنين مع بعض ولا يمكن كل واحد لوحده؟', a: 'بيشتغلوا أحسن مع بعض كروتين متكامل، بس تقدري تستخدمي أي واحد فيهم لوحده حسب احتياج شعرك في اليوم.' },
+      { q: 'هيفرق مع الشعر الدقيق أو الخفيف؟', a: 'التركيبة خفيفة ومش بتثقّل الشعر، فمناسبة للشعر الدقيق كمان بدون ما تخليه يبان لازق.' },
+      { q: 'هفضل أشوف نتيجة بعد كام استخدام؟', a: 'كتير من العميلات بيلاحظوا فرق في الملمس واللمعان من أول استخدام، والنتيجة بتتحسن مع الاستمرار لمدة 2-4 أسابيع.' },
+      { q: 'هل آمنين للاستخدام أثناء الحمل؟', a: 'الشامبو والبلسم للاستخدام الخارجي على الشعر فقط. يُنصح بتجنب ملامسة المنتج المباشرة لفروة الرأس بكميات كبيرة أثناء الحمل، واستشارة الطبيب لو عندك أي حساسية أو قلق.' },
+      { q: 'هل يصلحوا للأطفال؟', a: 'المنتجات مش مخصصة للأطفال تحديدًا. لو حابة تستخدميهم لطفلك، يُفضّل استشارة طبيب أطفال الأول، وتجنب ملامستهم للعين.' }
+    ],
     beforeAfter: ['assets/duo-before-after.webp'],
     video: 'assets/duo-video.webm',
     noNasties: ['بدون بارابين', 'بدون كبريتات', 'بدون فثالات', 'بدون إضافات صناعية', 'بدون قسوة على الحيوانات'],
@@ -157,7 +189,21 @@ const PRODUCTS = {
       { title: 'الشطف النهائي', text: 'اشطفي شعرك كويس بالمية الفاترة واستمتعي بالنتيجة' }
     ],
     howtoTip: 'استخدمي الشامبو والبلسم يوميًا، والماسك مرة أو مرتين أسبوعيًا',
-    ingredients: ['كولاجين', 'خلاصة الماكا', 'زيت الأرجان', 'كيراتين محلل'],
+    ingredients: [
+      { name: 'كولاجين', desc: 'يدعم بنية الشعرة وقوتها' },
+      { name: 'خلاصة الماكا', desc: 'تغذي الشعر الجاف والمجهد' },
+      { name: 'زيت الأرجان', desc: 'يحبس الرطوبة ويزود اللمعان' },
+      { name: 'كيراتين محلل', desc: 'يساعد على تنعيم الشعر المسامي والتالف' }
+    ],
+    faq: [
+      { q: 'إزاي أستخدم الباقة الكاملة كروتين واحد؟', a: 'الشامبو والبلسم للاستخدام اليومي أو يوم بعد يوم، والماسك مرة أو مرتين أسبوعيًا كعلاج مكثف إضافي.' },
+      { q: 'ليه أشتري الباقة بدل ما أجرب منتج واحد؟', a: 'المنتجات الثلاثة مصممة تكمّل بعض: تنظيف وترطيب يومي بالشامبو والبلسم، وترميم عميق أسبوعي بالماسك، فبتاخدي روتين متكامل بدل ما تجمعي منتجات من ماركات مختلفة.' },
+      { q: 'هل الباقة مناسبة للشعر المصبوغ؟', a: 'أيوه، الثلاث منتجات آمنة على الشعر المصبوغ والمعالج كيميائيًا.' },
+      { q: 'هفضل أشوف فرق بعد قد إيه؟', a: 'غالبًا بتلاحظي فرق في الملمس من أول أسبوعين، والنتيجة الكاملة بتظهر مع الاستمرار لشهر تقريبًا.' },
+      { q: 'تصلح لكل أنواع الشعر؟', a: 'أيوه، الباقة مصممة لتناسب كل أنواع الشعر، من الجاف والتالف لحد الخفيف والمموّج.' },
+      { q: 'هل الباقة آمنة أثناء الحمل؟', a: 'المنتجات الثلاثة للاستخدام الخارجي على الشعر فقط. يُنصح بالتركيز على أطراف الشعر مع الماسك وتجنب ملامسة فروة الرأس بكميات كبيرة أثناء الحمل، واستشارة الطبيب لو عندك أي حساسية أو قلق.' },
+      { q: 'هل تصلح للأطفال؟', a: 'المنتجات مش مخصصة للأطفال تحديدًا. لو حابة تستخدميها لطفلك، يُفضّل استشارة طبيب أطفال الأول، وتجنب ملامستها للعين.' }
+    ],
     beforeAfter: [],
     inStock: true
   },
@@ -183,7 +229,23 @@ const PRODUCTS = {
       { title: 'كمنتج تصفيف', text: 'استخدميه على شعر جاف لتنعيمه والتحكم في الشعر الطائر' }
     ],
     howtoTip: 'قليل منه بيكفي — ابدئي بكمية بسيطة وزوّدي حسب طول شعرك',
-    ingredients: ['زيت الأرجان المغربي', 'فيتامين E', 'أحماض دهنية أساسية', 'خلاصة نباتية طبيعية', 'زيت جوز الهند'],
+    ingredients: [
+      { name: 'زيت الأرجان المغربي', desc: 'يغذي بعمق ويدعم إصلاح الشعر ويزود اللمعان' },
+      { name: 'فيتامين E', desc: 'عناية مضادة للأكسدة تساعد في حماية الشعر من الجفاف' },
+      { name: 'أحماض دهنية أساسية', desc: 'تساعد على تقوية سطح الشعرة وتحسين المرونة' },
+      { name: 'خلاصة نباتية طبيعية', desc: 'عناية إضافية ومرطبة للشعر' },
+      { name: 'زيت جوز الهند', desc: 'يرطب ويحمي من الجفاف' }
+    ],
+    faq: [
+      { q: 'إزاي أستخدم السيروم؟', a: 'حطي كام قطرة على شعر مبلل بالمنشفة أو جاف، ركزي على الأطراف، ومفيش داعي تشطفيه. ممكن تستخدميه كعلاج ليلي أو كلمسة أخيرة بعد التصفيف.' },
+      { q: 'أستخدمه كام مرة؟', a: 'يوميًا أو حسب احتياجك. لو شعرك جاف أو تالف استخدميه بانتظام، ولو شعرك عادي يكفي 2-3 مرات أسبوعيًا.' },
+      { q: 'يناسب أنهي نوع شعر؟', a: 'مناسب لكل أنواع الشعر، وبالذات الجاف والمموّج والهايش والمصبوغ والتالف.' },
+      { q: 'هيثقّل شعري؟', a: 'لأ، التركيبة خفيفة جدًا وبتتشرب بسرعة، بتدي ترطيب ولمعان من غير ما تخلي الشعر لازق أو تقيل.' },
+      { q: 'ريحته قوية؟', a: 'ريحته خفيفة وطبيعية ومش طاغية، وبتخف بسرعة وتسيب شعرك منتعش.' },
+      { q: 'يصلح للشعر المصبوغ أو المفرود؟', a: 'أيوه، مناسب تمامًا للشعر المصبوغ والمعالج كيميائيًا، وبيساعد يحمي اللون ويقلل من التلف الإضافي.' },
+      { q: 'هل السيروم آمن أثناء الحمل؟', a: 'المنتج للاستخدام الخارجي على الشعر فقط. يُنصح باستشارة الطبيب لو عندك أي حساسية أو قلق أثناء الحمل قبل الاستخدام.' },
+      { q: 'هل يصلح للأطفال؟', a: 'المنتج مش مخصص للأطفال تحديدًا. لو حابة تستخدميه لطفلك، يُفضّل استشارة طبيب أطفال الأول، وتجنب ملامسته للعين.' }
+    ],
     beforeAfter: ['assets/serum-before-after1.webp', 'assets/serum-before-after2.webp'],
     video: 'assets/serum-video.webm',
     inStock: false
@@ -271,13 +333,22 @@ product.steps.forEach(function (s, i) {
 });
 document.getElementById('howtoTip').textContent = product.howtoTip || '';
 
-// Ingredients
+// Ingredients (detailed: name + role)
 const ingredientsGrid = document.getElementById('ingredientsGrid');
 product.ingredients.forEach(function (ing) {
   const div = document.createElement('div');
-  div.className = 'ingredient-chip';
-  div.textContent = ing;
+  div.className = 'ingredient-card';
+  div.innerHTML = '<h3>' + ing.name + '</h3><p>' + ing.desc + '</p>';
   ingredientsGrid.appendChild(div);
+});
+
+// FAQ
+const faqList = document.getElementById('faqList');
+(product.faq || []).forEach(function (item) {
+  const details = document.createElement('details');
+  details.className = 'faq-item';
+  details.innerHTML = '<summary>' + item.q + '</summary><p>' + item.a + '</p>';
+  faqList.appendChild(details);
 });
 
 // Hair types (mask only)
@@ -311,11 +382,13 @@ const beforeAfterSection = document.getElementById('beforeAfterSection');
 const beforeAfterGrid = document.getElementById('beforeAfterGrid');
 if (product.beforeAfter && product.beforeAfter.length) {
   product.beforeAfter.forEach(function (src) {
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = 'نتيجة قبل وبعد استخدام ' + product.name;
-    img.loading = 'lazy';
-    beforeAfterGrid.appendChild(img);
+    const item = document.createElement('div');
+    item.className = 'before-after-item';
+    item.innerHTML =
+      '<span class="before-after-tag">قبل → بعد</span>' +
+      '<img src="' + src + '" alt="نتيجة قبل وبعد استخدام ' + product.name + '" loading="lazy">' +
+      '<p class="before-after-caption">نتيجة حقيقية بعد استخدام ' + product.name + '</p>';
+    beforeAfterGrid.appendChild(item);
   });
 } else {
   beforeAfterSection.hidden = true;
@@ -387,6 +460,78 @@ Object.keys(PRODUCTS).forEach(function (id) {
     (p.inStock ? '<p class="related-price">' + p.price + ' جنيه</p>' : '<p class="related-price out">قريبًا</p>');
   relatedGrid.appendChild(card);
 });
+
+// =====================================================================
+// Customer review submission — sent to the sheet for manual moderation,
+// never published on the page automatically.
+// =====================================================================
+(function () {
+  const reviewForm = document.getElementById('reviewForm');
+  if (!reviewForm) return;
+
+  const starBtns = document.querySelectorAll('#starRating .star-btn');
+  const reviewFormMessage = document.getElementById('reviewFormMessage');
+  let selectedStars = 0;
+
+  function paintStars(count) {
+    starBtns.forEach(function (btn) {
+      const n = parseInt(btn.getAttribute('data-star'), 10);
+      btn.classList.toggle('is-active', n <= count);
+    });
+  }
+
+  starBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      selectedStars = parseInt(btn.getAttribute('data-star'), 10);
+      paintStars(selectedStars);
+    });
+  });
+
+  reviewForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    if (selectedStars === 0) {
+      reviewFormMessage.textContent = 'من فضلك اختاري تقييمك بالنجوم الأول.';
+      reviewFormMessage.className = 'form-message error';
+      return;
+    }
+    if (!reviewForm.checkValidity()) {
+      reviewForm.reportValidity();
+      return;
+    }
+
+    const data = {
+      type: 'review',
+      product: productId,
+      productName: product.name,
+      name: reviewForm.reviewerName.value.trim(),
+      email: reviewForm.reviewerEmail.value.trim(),
+      stars: selectedStars,
+      text: reviewForm.reviewText.value.trim(),
+      timestamp: new Date().toISOString()
+    };
+
+    const payload = JSON.stringify(data);
+    let sent = false;
+    if (navigator.sendBeacon) {
+      const blob = new Blob([payload], { type: 'text/plain;charset=UTF-8' });
+      sent = navigator.sendBeacon(GOOGLE_SCRIPT_URL, blob);
+    }
+    if (!sent) {
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST', mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: payload
+      }).catch(function (err) { console.error('Failed to send review:', err); });
+    }
+
+    reviewForm.reset();
+    selectedStars = 0;
+    paintStars(0);
+    reviewFormMessage.textContent = 'شكرًا ليكِ! وصلنا تقييمك وهنراجعه قريب.';
+    reviewFormMessage.className = 'form-message success';
+  });
+})();
 
 // =====================================================================
 // Sticky mobile CTA — always reflects THIS product's real discount,

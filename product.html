@@ -109,6 +109,11 @@ src="https://www.facebook.com/tr?id=1751524826109438&ev=PageView&noscript=1"
         <a href="#order" class="btn btn-primary btn-full">اطلبي الآن</a>
       </div>
 
+      <a href="https://www.jawdaonline.com/egy-request" target="_blank" rel="noopener" class="guarantee-badge">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        <span>ضمان الاسترجاع والاستبدال — اعرفي التفاصيل</span>
+      </a>
+
       <div class="product-out-of-stock-msg" id="outOfStockMsg" hidden>
         <p>المنتج غير متاح للطلب حاليًا، هيتوفر قريبًا. تابعينا على فيسبوك عشان تعرفي أول ما يرجع.</p>
         <a href="https://www.facebook.com/karseell.original.egypt/" target="_blank" rel="noopener" class="btn btn-outline">تابعينا على فيسبوك</a>
@@ -131,6 +136,14 @@ src="https://www.facebook.com/tr?id=1751524826109438&ev=PageView&noscript=1"
   <div class="wrap">
     <h2 class="section-title">مكونات أساسية</h2>
     <div class="ingredients-grid" id="ingredientsGrid"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="product-faq">
+  <div class="wrap">
+    <h2 class="section-title">أسئلة شائعة</h2>
+    <div class="faq-list" id="faqList"></div>
   </div>
 </section>
 
@@ -253,6 +266,41 @@ src="https://www.facebook.com/tr?id=1751524826109438&ev=PageView&noscript=1"
 
       <button type="submit" class="btn btn-primary btn-full" id="submitOrderBtn">تأكيد الطلب</button>
       <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<!-- Review submission (moderated — not published automatically) -->
+<section class="review-submit">
+  <div class="wrap">
+    <h2 class="section-title">قيّمي تجربتك معانا</h2>
+    <p class="review-submit-note">شاركينا رأيك في المنتج، هيوصلنا مباشرة ونراجعه بعناية.</p>
+
+    <form id="reviewForm" class="review-form" novalidate>
+      <label>
+        الاسم
+        <input type="text" name="reviewerName" required placeholder="اكتبي اسمك">
+      </label>
+      <label>
+        البريد الإلكتروني
+        <input type="email" name="reviewerEmail" required placeholder="example@email.com">
+      </label>
+      <label>
+        تقييمك
+        <div class="star-rating" id="starRating">
+          <button type="button" class="star-btn" data-star="1" aria-label="نجمة واحدة">★</button>
+          <button type="button" class="star-btn" data-star="2" aria-label="نجمتين">★</button>
+          <button type="button" class="star-btn" data-star="3" aria-label="3 نجوم">★</button>
+          <button type="button" class="star-btn" data-star="4" aria-label="4 نجوم">★</button>
+          <button type="button" class="star-btn" data-star="5" aria-label="5 نجوم">★</button>
+        </div>
+      </label>
+      <label>
+        تجربتك مع المنتج
+        <textarea name="reviewText" required placeholder="احكيلنا تجربتك مع المنتج..."></textarea>
+      </label>
+      <button type="submit" class="btn btn-primary btn-full">إرسال التقييم</button>
+      <p id="reviewFormMessage" class="form-message" role="status" aria-live="polite"></p>
     </form>
   </div>
 </section>

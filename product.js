@@ -14,6 +14,14 @@ function getJourneyText() {
   } catch (err) { return ''; }
 }
 
+// ---- Device type (from the browser's own User Agent string) ----
+function getDeviceType() {
+  const ua = navigator.userAgent || '';
+  if (/iPhone|iPad|iPod/i.test(ua)) return 'iPhone/iPad';
+  if (/Android/i.test(ua)) return 'Android';
+  return 'كمبيوتر';
+}
+
 // ---- Hamburger side menu (shared behavior with main site) ----
 const hamburgerBtn = document.getElementById('hamburgerBtn');
 const sideMenu = document.getElementById('sideMenu');
@@ -508,6 +516,7 @@ Object.keys(PRODUCTS).forEach(function (id) {
       email: reviewForm.reviewerEmail.value.trim(),
       stars: selectedStars,
       text: reviewForm.reviewText.value.trim(),
+      device: getDeviceType(),
       timestamp: new Date().toISOString()
     };
 
@@ -661,6 +670,7 @@ if (product.inStock) {
       phone: form.phone.value.trim(),
       governorate: form.governorate.value,
       address: form.address.value.trim(),
+      device: getDeviceType(),
       timestamp: new Date().toISOString()
     };
 
@@ -708,6 +718,7 @@ if (product.inStock) {
       address: address,
       page: window.location.href,
       journey: getJourneyText(),
+      device: getDeviceType(),
       timestamp: new Date().toISOString()
     };
 

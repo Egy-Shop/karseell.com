@@ -17,6 +17,14 @@ function getJourneyText() {
 }
 logJourney('زيارة: الصفحة الرئيسية');
 
+// ---- Device type (from the browser's own User Agent string) ----
+function getDeviceType() {
+  const ua = navigator.userAgent || '';
+  if (/iPhone|iPad|iPod/i.test(ua)) return 'iPhone/iPad';
+  if (/Android/i.test(ua)) return 'Android';
+  return 'كمبيوتر';
+}
+
 // ---- Offer data ----
 const offerLabels = {
   mask: 'الماسك لوحده',
@@ -358,6 +366,7 @@ form.addEventListener('submit', function (e) {
     phone: form.phone.value.trim(),
     governorate: form.governorate.value,
     address: form.address.value.trim(),
+    device: getDeviceType(),
     timestamp: new Date().toISOString()
   };
 
@@ -419,6 +428,7 @@ function sendAbandonedCheckout() {
     address: address,
     page: window.location.href,
     journey: getJourneyText(),
+    device: getDeviceType(),
     timestamp: new Date().toISOString()
   };
 

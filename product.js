@@ -191,6 +191,11 @@ const product = PRODUCTS[productId];
 let quantity = 1;
 let couponApplied = false;
 
+// ---- Abandoned checkout tracking ----
+let checkoutStarted = false;
+let orderSubmitted = false;
+let abandonedSent = false;
+
 // ---- Render static product content ----
 document.getElementById('pageTitle').textContent = 'Karseell | ' + product.name;
 document.getElementById('pageDescription').setAttribute('content', product.desc);
@@ -454,15 +459,20 @@ if (product.inStock) {
     fbq('track', 'ViewContent', { content_name: product.name, value: product.price, currency: 'EGP' });
   }
 
-  let checkoutStarted = false;
+  document.querySelectorAll('a[href="#order"]').forEach(function (link) {
+    link.addEventListener('click', function () { checkoutStarted = true; });
+  });
+
+  let pixelInitiateFired = false;
   const form = document.getElementById('orderForm');
   form.addEventListener('input', function () {
-    if (checkoutStarted) return;
     checkoutStarted = true;
+    if (pixelInitiateFired) return;
+    pixelInitiateFired = true;
     if (typeof fbq === 'function') {
       fbq('track', 'InitiateCheckout', { content_name: product.name, value: product.price, currency: 'EGP' });
     }
-  }, { once: true });
+  });
 
   const formMessage = document.getElementById('formMessage');
 
@@ -492,6 +502,7 @@ if (product.inStock) {
     };
 
     console.log('Order submitted:', data);
+    orderSubmitted = true;
     try { sessionStorage.setItem('karseellLastOrder', JSON.stringify(data)); } catch (err) {}
 
     const payload = JSON.stringify(data);
@@ -511,5 +522,40 @@ if (product.inStock) {
       }).catch(function (err) { console.error('Failed to send order:', err); })
         .finally(function () { window.location.href = 'thankyou.html'; });
     }
+  });
+
+  // ---- Abandoned checkout: fires only if the customer started (clicked an "order now"
+  // button or typed anything) and left without completing the order ----
+  function sendAbandonedCheckout() {
+    if (!checkoutStarted || orderSubmitted || abandonedSent) return;
+
+    const name = form.name.value.trim();
+    const phone = form.phone.value.trim();
+    const governorate = form.governorate.value;
+    const address = form.address.value.trim();
+
+    abandonedSent = true;
+
+    const data = {
+      type: 'abandoned',
+      offer: product.name,
+      name: name,
+      phone: phone,
+      governorate: governorate,
+      address: address,
+      page: window.location.href,
+      timestamp: new Date().toISOString()
+    };
+
+    const payload = JSON.stringify(data);
+    if (navigator.sendBeacon) {
+      const blob = new Blob([payload], { type: 'text/plain;charset=UTF-8' });
+      navigator.sendBeacon(GOOGLE_SCRIPT_URL, blob);
+    }
+  }
+
+  window.addEventListener('pagehide', sendAbandonedCheckout);
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') sendAbandonedCheckout();
   });
 }

@@ -1,5 +1,7 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzyvclP3ma7KSbrA05xGojVDf470S8plyetSRo1OEWbOBsWG-ZnwE41rWmrLUz6tiLo/exec';
+
 // ---- Offer data ----
 const offerLabels = {
   mask: 'الماسك لوحده',
@@ -160,6 +162,11 @@ const qtyValue = document.getElementById('qtyValue');
 let couponApplied = false;
 let quantity = 1;
 
+// ---- Abandoned checkout tracking ----
+let checkoutStarted = false;
+let orderSubmitted = false;
+let abandonedSent = false;
+
 function computeOrderTotals(offerKey, qty) {
   const details = offerDetails[offerKey];
   if (!details) return null;
@@ -209,6 +216,8 @@ function updateSummary(offerKey) {
 function selectOffer(offerKey) {
   const card = document.querySelector('.offer-card[data-offer="' + offerKey + '"]');
   if (!card) return;
+
+  checkoutStarted = true;
 
   // reset quantity whenever a different offer is chosen
   if (offerField.value !== offerKey) {
@@ -288,6 +297,11 @@ applyCouponBtn.addEventListener('click', function () {
 const form = document.getElementById('orderForm');
 const formMessage = document.getElementById('formMessage');
 
+document.querySelectorAll('a[href="#order"]').forEach(function (link) {
+  link.addEventListener('click', function () { checkoutStarted = true; });
+});
+form.addEventListener('input', function () { checkoutStarted = true; });
+
 form.addEventListener('submit', function (e) {
   e.preventDefault();
 
@@ -329,7 +343,7 @@ form.addEventListener('submit', function (e) {
   };
 
   // send the order to the connected Google Sheet
-  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzyvclP3ma7KSbrA05xGojVDf470S8plyetSRo1OEWbOBsWG-ZnwE41rWmrLUz6tiLo/exec';
+  orderSubmitted = true;
   const payload = JSON.stringify(data);
 
   console.log('Order submitted:', data);
@@ -360,4 +374,42 @@ form.addEventListener('submit', function (e) {
       window.location.href = 'thankyou.html';
     });
   }
+});
+
+// ---- Abandoned checkout: fires only if the customer started (clicked an "order now"
+// button or typed anything) and left without completing the order ----
+function sendAbandonedCheckout() {
+  if (!checkoutStarted || orderSubmitted || abandonedSent) return;
+
+  const name = form.name.value.trim();
+  const phone = form.phone.value.trim();
+  const governorate = form.governorate.value;
+  const address = form.address.value.trim();
+
+  // nothing at all was picked or typed — not worth logging
+  if (!offerField.value && !name && !phone && !governorate && !address) return;
+
+  abandonedSent = true;
+
+  const data = {
+    type: 'abandoned',
+    offer: offerField.value ? (offerLabels[offerField.value] || offerField.value) : '',
+    name: name,
+    phone: phone,
+    governorate: governorate,
+    address: address,
+    page: window.location.href,
+    timestamp: new Date().toISOString()
+  };
+
+  const payload = JSON.stringify(data);
+  if (navigator.sendBeacon) {
+    const blob = new Blob([payload], { type: 'text/plain;charset=UTF-8' });
+    navigator.sendBeacon(GOOGLE_SCRIPT_URL, blob);
+  }
+}
+
+window.addEventListener('pagehide', sendAbandonedCheckout);
+document.addEventListener('visibilitychange', function () {
+  if (document.visibilityState === 'hidden') sendAbandonedCheckout();
 });

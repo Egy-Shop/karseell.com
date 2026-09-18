@@ -1,5 +1,19 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// ---- Session journey tracking (which pages/buttons the visitor went through this session) ----
+function logJourney(label) {
+  try {
+    const journey = JSON.parse(sessionStorage.getItem('karseellJourney') || '[]');
+    journey.push(label);
+    sessionStorage.setItem('karseellJourney', JSON.stringify(journey));
+  } catch (err) {}
+}
+function getJourneyText() {
+  try {
+    return JSON.parse(sessionStorage.getItem('karseellJourney') || '[]').join(' ← ');
+  } catch (err) { return ''; }
+}
+
 // ---- Hamburger side menu (shared behavior with main site) ----
 const hamburgerBtn = document.getElementById('hamburgerBtn');
 const sideMenu = document.getElementById('sideMenu');
@@ -187,6 +201,7 @@ const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzyvclP3ma7KS
 const params = new URLSearchParams(window.location.search);
 const productId = PRODUCTS[params.get('id')] ? params.get('id') : 'mask';
 const product = PRODUCTS[productId];
+logJourney('زيارة: صفحة ' + product.name);
 
 let quantity = 1;
 let couponApplied = false;
@@ -460,7 +475,10 @@ if (product.inStock) {
   }
 
   document.querySelectorAll('a[href="#order"]').forEach(function (link) {
-    link.addEventListener('click', function () { checkoutStarted = true; });
+    link.addEventListener('click', function () {
+      checkoutStarted = true;
+      logJourney('دوست: اطلبي الآن (' + product.name + ')');
+    });
   });
 
   let pixelInitiateFired = false;
@@ -544,6 +562,7 @@ if (product.inStock) {
       governorate: governorate,
       address: address,
       page: window.location.href,
+      journey: getJourneyText(),
       timestamp: new Date().toISOString()
     };
 

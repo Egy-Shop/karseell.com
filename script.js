@@ -2,6 +2,21 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzyvclP3ma7KSbrA05xGojVDf470S8plyetSRo1OEWbOBsWG-ZnwE41rWmrLUz6tiLo/exec';
 
+// ---- Session journey tracking (which pages/buttons the visitor went through this session) ----
+function logJourney(label) {
+  try {
+    const journey = JSON.parse(sessionStorage.getItem('karseellJourney') || '[]');
+    journey.push(label);
+    sessionStorage.setItem('karseellJourney', JSON.stringify(journey));
+  } catch (err) {}
+}
+function getJourneyText() {
+  try {
+    return JSON.parse(sessionStorage.getItem('karseellJourney') || '[]').join(' ← ');
+  } catch (err) { return ''; }
+}
+logJourney('زيارة: الصفحة الرئيسية');
+
 // ---- Offer data ----
 const offerLabels = {
   mask: 'الماسك لوحده',
@@ -218,6 +233,7 @@ function selectOffer(offerKey) {
   if (!card) return;
 
   checkoutStarted = true;
+  logJourney('اختارت عرض: ' + (offerLabels[offerKey] || offerKey));
 
   // reset quantity whenever a different offer is chosen
   if (offerField.value !== offerKey) {
@@ -298,7 +314,10 @@ const form = document.getElementById('orderForm');
 const formMessage = document.getElementById('formMessage');
 
 document.querySelectorAll('a[href="#order"]').forEach(function (link) {
-  link.addEventListener('click', function () { checkoutStarted = true; });
+  link.addEventListener('click', function () {
+    checkoutStarted = true;
+    logJourney('دوست: اطلبي الآن');
+  });
 });
 form.addEventListener('input', function () { checkoutStarted = true; });
 
@@ -399,6 +418,7 @@ function sendAbandonedCheckout() {
     governorate: governorate,
     address: address,
     page: window.location.href,
+    journey: getJourneyText(),
     timestamp: new Date().toISOString()
   };
 

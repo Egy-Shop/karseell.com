@@ -471,7 +471,7 @@ if (soonGrid) {
       '<div class="soon-card-visual">' + (p.image ? '<img src="' + p.image + '" alt="' + p.name + '">' : placeholderIcon) + '</div>' +
       '<h3>' + p.name + '</h3>' +
       '<ul>' + p.details.map(function (d) { return '<li>' + d + '</li>'; }).join('') + '</ul>' +
-      '<button type="button" class="btn btn-outline btn-full choose-soon" data-soon="' + p.id + '">احجزي قبل الجميع</button>';
+      '<button type="button" class="btn btn-primary btn-full choose-soon" data-soon="' + p.id + '">احجزي قبل الجميع</button>';
     soonGrid.appendChild(card);
   });
 
@@ -489,7 +489,9 @@ if (soonGrid) {
     if (card) card.classList.add('selected');
     soonProductField.value = product.name;
     selectedSoonLabel.textContent = product.name;
-    document.getElementById('preorderForm').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const form = document.getElementById('preorderForm');
+    form.hidden = false;
+    form.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
   document.querySelectorAll('.choose-soon').forEach(function (btn) {

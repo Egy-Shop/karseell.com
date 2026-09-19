@@ -1279,7 +1279,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   /* ---- Coming Soon cards: same slider treatment, smaller cards ---- */
   .soon-grid{
     grid-auto-flow: column;
-    grid-auto-columns: 44%;
+    grid-auto-columns: 66%;
     grid-template-columns: none;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -1290,7 +1290,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     padding-inline: 24px;
   }
   .soon-grid::-webkit-scrollbar{ display: none; }
-  .soon-card{ scroll-snap-align: center; }
+  .soon-card{ scroll-snap-align: center; padding: 14px 12px; }
+  .soon-card h3{ font-size: 13px; margin-bottom: 6px; }
+  .soon-card ul{ margin-bottom: 10px; }
+  .soon-card ul li{ font-size: 11.5px; padding: 1px 0; }
+  .soon-card-visual{ margin-bottom: 8px; }
+  .soon-badge{ font-size: 10px; padding: 3px 10px; margin-bottom: 6px; }
 
   .offer-slider-arrow{
     display: flex;

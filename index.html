@@ -325,6 +325,41 @@ src="https://www.facebook.com/tr?id=1751524826109438&ev=PageView&noscript=1"
   </div>
 </section>
 
+<!-- Coming Soon: pre-order teaser for upcoming products -->
+<section class="soon-section" id="soon">
+  <div class="wrap">
+    <h2 class="section-title">قريبًا عندنا</h2>
+    <p class="soon-sub">منتجات جديدة في الطريق من Karseell — احجزي مكانك الأول من غير أي دفع</p>
+
+    <div class="soon-slider-wrap">
+      <button type="button" class="offer-slider-arrow soon-slider-prev" id="soonPrev" aria-label="المنتج السابق">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+
+      <div class="soon-grid" id="soonGrid"></div>
+
+      <button type="button" class="offer-slider-arrow soon-slider-next" id="soonNext" aria-label="المنتج التالي">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+
+    <form id="preorderForm" class="preorder-form" novalidate hidden>
+      <input type="hidden" id="soonProductField" name="soonProduct" value="">
+      <p class="preorder-sub">المنتج المختار: <strong id="selectedSoonLabel">لسه ما اخترتيش</strong></p>
+      <label>
+        الاسم بالكامل
+        <input type="text" name="name" required placeholder="اكتبي اسمك">
+      </label>
+      <label>
+        رقم الموبايل
+        <input type="tel" name="phone" required pattern="^01[0-9]{9}$" placeholder="01xxxxxxxxx">
+      </label>
+      <button type="submit" class="btn btn-primary btn-full">احجزي قبل الجميع</button>
+      <p id="preorderFormMessage" class="form-message" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
 <!-- Order Form -->
 <section class="order" id="order">
   <div class="wrap">
@@ -427,41 +462,6 @@ src="https://www.facebook.com/tr?id=1751524826109438&ev=PageView&noscript=1"
 
       <button type="submit" class="btn btn-primary btn-full">تأكيد الطلب</button>
       <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
-    </form>
-  </div>
-</section>
-
-<!-- Coming Soon: pre-order teaser for upcoming products -->
-<section class="soon-section" id="soon">
-  <div class="wrap">
-    <h2 class="section-title">قريبًا عندنا</h2>
-    <p class="soon-sub">منتجات جديدة في الطريق من Karseell — احجزي مكانك الأول من غير أي دفع</p>
-
-    <div class="soon-slider-wrap">
-      <button type="button" class="offer-slider-arrow soon-slider-prev" id="soonPrev" aria-label="المنتج السابق">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
-      </button>
-
-      <div class="soon-grid" id="soonGrid"></div>
-
-      <button type="button" class="offer-slider-arrow soon-slider-next" id="soonNext" aria-label="المنتج التالي">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-      </button>
-    </div>
-
-    <form id="preorderForm" class="preorder-form" novalidate>
-      <input type="hidden" id="soonProductField" name="soonProduct" value="">
-      <p class="preorder-sub">المنتج المختار: <strong id="selectedSoonLabel">لسه ما اخترتيش</strong></p>
-      <label>
-        الاسم بالكامل
-        <input type="text" name="name" required placeholder="اكتبي اسمك">
-      </label>
-      <label>
-        رقم الموبايل
-        <input type="tel" name="phone" required pattern="^01[0-9]{9}$" placeholder="01xxxxxxxxx">
-      </label>
-      <button type="submit" class="btn btn-primary btn-full">احجزي قبل الجميع</button>
-      <p id="preorderFormMessage" class="form-message" role="status" aria-live="polite"></p>
     </form>
   </div>
 </section>

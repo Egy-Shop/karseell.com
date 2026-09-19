@@ -91,6 +91,7 @@ src="https://www.facebook.com/tr?id=1751524826109438&ev=PageView&noscript=1"
       <button type="button" class="info-tab-btn" data-info-tab="reviews">المراجعات</button>
       <button type="button" class="info-tab-btn" data-info-tab="howto">طريقة الاستخدام</button>
       <button type="button" class="info-tab-btn" data-info-tab="verify">التأكد من الأصلي</button>
+      <button type="button" class="info-tab-btn" data-info-tab="faq">أسئلة شائعة</button>
     </nav>
 
     <!-- Pane: Benefits -->
@@ -180,6 +181,36 @@ src="https://www.facebook.com/tr?id=1751524826109438&ev=PageView&noscript=1"
           <h3>جودة الطباعة والخامة</h3>
           <p>خط الطباعة واضح وحاد بدون بهتان، والعبوة نفسها متينة وغير هشة.</p>
         </div>
+      </div>
+    </div>
+
+    <!-- Pane: FAQ -->
+    <div id="tab-faq" class="info-tab-pane">
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>إيه طريقة الدفع؟</summary>
+          <p>الدفع عند الاستلام (Cash on Delivery) متاح لكل المحافظات، من غير أي دفع مقدّم.</p>
+        </details>
+        <details class="faq-item">
+          <summary>هيوصل امتى؟</summary>
+          <p>الاستلام عادةً خلال 3 إلى 5 أيام عمل من تأكيد الطلب، حسب المحافظة.</p>
+        </details>
+        <details class="faq-item">
+          <summary>إزاي أتأكد إن المنتج أصلي؟</summary>
+          <p>شوفي تبويب "التأكد من الأصلي" فوق — فيه صور حقيقية لشعار Karseell المحفور والباركود الرسمي على العبوة.</p>
+        </details>
+        <details class="faq-item">
+          <summary>فيه خصم على الطلبات الكبيرة؟</summary>
+          <p>أيوه، لو طلبتِ عبوتين من نفس العرض بيتفعّل سعر خاص أقل، والباقة الكاملة أصلًا بتيجي بأكبر خصم وشحن مجاني.</p>
+        </details>
+        <details class="faq-item">
+          <summary>أقدر أسترجع أو أستبدل المنتج؟</summary>
+          <p>أيوه، تقدري تقدّمي طلب استرجاع أو استبدال من <a href="https://www.jawdaonline.com/egy-request" target="_blank" rel="noopener">الرابط ده</a>.</p>
+        </details>
+        <details class="faq-item">
+          <summary>الشحن مجاني ولا له مصاريف؟</summary>
+          <p>الشحن مجاني للطلبات اللي توصل قيمتها 1000 جنيه أو أكتر (زي الباقة الكاملة أو عرض العبوتين)، وغير كده مصاريف الشحن 35 جنيه بس.</p>
+        </details>
       </div>
     </div>
   </div>
@@ -396,6 +427,87 @@ src="https://www.facebook.com/tr?id=1751524826109438&ev=PageView&noscript=1"
 
       <button type="submit" class="btn btn-primary btn-full">تأكيد الطلب</button>
       <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<!-- Coming Soon: pre-order teaser for upcoming products -->
+<section class="soon-section" id="soon">
+  <div class="wrap">
+    <h2 class="section-title">قريبًا عندنا</h2>
+    <p class="soon-sub">منتجات جديدة في الطريق من Karseell — احجزي مكانك الأول من غير أي دفع</p>
+
+    <div class="soon-slider-wrap">
+      <button type="button" class="offer-slider-arrow soon-slider-prev" id="soonPrev" aria-label="المنتج السابق">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+
+      <div class="soon-grid" id="soonGrid"></div>
+
+      <button type="button" class="offer-slider-arrow soon-slider-next" id="soonNext" aria-label="المنتج التالي">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+
+    <form id="preorderForm" class="preorder-form" novalidate>
+      <input type="hidden" id="soonProductField" name="soonProduct" value="">
+      <p class="preorder-sub">المنتج المختار: <strong id="selectedSoonLabel">لسه ما اخترتيش</strong></p>
+      <label>
+        الاسم بالكامل
+        <input type="text" name="name" required placeholder="اكتبي اسمك">
+      </label>
+      <label>
+        رقم الموبايل
+        <input type="tel" name="phone" required pattern="^01[0-9]{9}$" placeholder="01xxxxxxxxx">
+      </label>
+      <button type="submit" class="btn btn-primary btn-full">احجزي قبل الجميع</button>
+      <p id="preorderFormMessage" class="form-message" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<!-- Review submission (moderated — not published automatically) -->
+<section class="review-submit">
+  <div class="wrap">
+    <h2 class="section-title">قيّمي تجربتك معانا</h2>
+    <p class="review-submit-note">شاركينا رأيك في المنتج، هيوصلنا مباشرة ونراجعه بعناية.</p>
+
+    <form id="reviewForm" class="review-form" novalidate>
+      <label>
+        عن أنهي منتج؟
+        <select name="reviewProduct" required>
+          <option value="" disabled selected>اختاري المنتج</option>
+          <option value="mask">الماسك لوحده</option>
+          <option value="duo">الشامبو + البلسم</option>
+          <option value="full">الباقة الكاملة</option>
+          <option value="serum">سيروم زيت الأرجان</option>
+          <option value="general">تعليق عام على الصفحة</option>
+        </select>
+      </label>
+      <label>
+        الاسم
+        <input type="text" name="reviewerName" required placeholder="اكتبي اسمك">
+      </label>
+      <label>
+        البريد الإلكتروني
+        <input type="email" name="reviewerEmail" required placeholder="example@email.com">
+      </label>
+      <label>
+        تقييمك
+        <div class="star-rating" id="starRating">
+          <button type="button" class="star-btn" data-star="1" aria-label="نجمة واحدة">★</button>
+          <button type="button" class="star-btn" data-star="2" aria-label="نجمتين">★</button>
+          <button type="button" class="star-btn" data-star="3" aria-label="3 نجوم">★</button>
+          <button type="button" class="star-btn" data-star="4" aria-label="4 نجوم">★</button>
+          <button type="button" class="star-btn" data-star="5" aria-label="5 نجوم">★</button>
+        </div>
+      </label>
+      <label>
+        تجربتك مع المنتج
+        <textarea name="reviewText" required placeholder="احكيلنا تجربتك مع المنتج..."></textarea>
+      </label>
+      <button type="submit" class="btn btn-primary btn-full">إرسال التقييم</button>
+      <p id="reviewFormMessage" class="form-message" role="status" aria-live="polite"></p>
     </form>
   </div>
 </section>

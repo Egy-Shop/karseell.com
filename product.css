@@ -230,49 +230,8 @@
   margin: 10px 0 0;
 }
 
-/* ============ FAQ ============ */
+/* ============ FAQ (shared styles live in style.css; this just sets this page's section padding) ============ */
 .product-faq{ padding: 48px 0; }
-.faq-list{
-  max-width: 720px;
-  margin: 0 auto;
-  display:flex;
-  flex-direction:column;
-  gap: 10px;
-}
-.faq-item{
-  background: var(--white);
-  border: 1.5px solid rgba(74,18,32,.1);
-  border-radius: 12px;
-  padding: 4px 18px;
-  box-shadow: var(--shadow);
-}
-.faq-item summary{
-  cursor: pointer;
-  padding: 14px 0;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 15px;
-  color: var(--emerald-deep);
-  list-style: none;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap: 10px;
-}
-.faq-item summary::-webkit-details-marker{ display:none; }
-.faq-item summary::after{
-  content: '+';
-  font-size: 20px;
-  color: var(--gold);
-  flex-shrink: 0;
-  transition: transform .2s ease;
-}
-.faq-item[open] summary::after{ transform: rotate(45deg); }
-.faq-item p{
-  margin: 0 0 16px;
-  font-size: 14px;
-  color: var(--ink-soft);
-}
 
 /* ============ Guarantee badge ============ */
 .guarantee-badge{
@@ -291,59 +250,8 @@
 .guarantee-badge:hover{ background: rgba(46,125,79,.14); }
 .guarantee-badge svg{ flex-shrink: 0; }
 
-/* ============ Review submission form ============ */
+/* ============ Review submission form (shared styles live in style.css) ============ */
 .review-submit{ padding: 48px 0; background: var(--ivory); }
-.review-submit-note{
-  text-align:center;
-  color: var(--ink-soft);
-  margin-top: -20px;
-  margin-bottom: 28px;
-}
-.review-form{
-  max-width: 520px;
-  margin: 0 auto;
-  display:flex;
-  flex-direction:column;
-  gap: 18px;
-  background: var(--white);
-  padding: 32px;
-  border-radius: var(--radius, 14px);
-  box-shadow: var(--shadow);
-}
-.review-form label{
-  display:flex;
-  flex-direction:column;
-  gap: 6px;
-  font-size: 14px;
-  color: var(--ink-soft);
-  font-weight: 500;
-}
-.review-form input,
-.review-form textarea{
-  font-family: var(--font-body);
-  font-size: 16px;
-  padding: 12px 14px;
-  border-radius: 10px;
-  border: 1.5px solid rgba(22,56,40,.18);
-  background: var(--ivory);
-  color: var(--ink);
-}
-.review-form textarea{ resize: vertical; min-height: 80px; }
-.star-rating{
-  display:flex;
-  gap: 6px;
-  font-size: 28px;
-}
-.star-btn{
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: rgba(74,18,32,.2);
-  padding: 0;
-  line-height: 1;
-  transition: color .15s ease;
-}
-.star-btn.is-active{ color: var(--gold); }
 
 /* ============ Reviews (product page) ============ */
 .product-reviews{ padding: 48px 0; }

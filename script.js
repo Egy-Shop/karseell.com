@@ -100,15 +100,16 @@ if (liveViewersEl) {
   }, 2000);
 }
 
-// ---- Offers slider arrows (mobile only; harmless no-op on desktop grid) ----
-(function () {
-  const track = document.getElementById('offerGrid');
-  const prevBtn = document.getElementById('offerPrev');
-  const nextBtn = document.getElementById('offerNext');
+// ---- Generic horizontal slider arrows (mobile only; harmless no-op on desktop grid) ----
+// Reused for both the offers slider and the "Coming Soon" slider.
+function initSlider(trackId, prevId, nextId, cardSelector) {
+  const track = document.getElementById(trackId);
+  const prevBtn = document.getElementById(prevId);
+  const nextBtn = document.getElementById(nextId);
   if (!track || !prevBtn || !nextBtn) return;
 
   function cardStep() {
-    const firstCard = track.querySelector('.offer-card');
+    const firstCard = track.querySelector(cardSelector);
     if (!firstCard) return track.clientWidth;
     const gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || '0') || 0;
     return firstCard.getBoundingClientRect().width + gap;
@@ -166,7 +167,9 @@ if (liveViewersEl) {
 
   updateArrowState();
   maybeStartPulse();
-})();
+}
+
+initSlider('offerGrid', 'offerPrev', 'offerNext', '.offer-card');
 
 // ---- Order summary elements ----
 const orderSummary = document.getElementById('orderSummary');
@@ -443,3 +446,183 @@ window.addEventListener('pagehide', sendAbandonedCheckout);
 document.addEventListener('visibilitychange', function () {
   if (document.visibilityState === 'hidden') sendAbandonedCheckout();
 });
+
+// =====================================================================
+// Coming Soon / pre-order — EDIT THIS ARRAY with the real product names,
+// image paths (put the file in assets/ and reference it here), and detail
+// bullets once they're ready. Leave "image: null" to show a placeholder icon.
+// =====================================================================
+const SOON_PRODUCTS = [
+  { id: 'soon1', name: 'ماسك الشعر البنفسجي', image: 'assets/soon-purple-mask.webp', details: ['يشيل الصفار ويرجّع البياض والفضي للشعر الفاتح', 'مخصص للشعر المفتوح أو المفروّد بس (مش للشعر الغامق)', 'يرطب ويقوي مع كل استخدام'] },
+  { id: 'soon2', name: 'كريم تعريف الكيرلي', image: 'assets/soon-curl-cream.webp', details: ['بيعرّف الكيرلي والموجي ويقلل الهيشان', 'Leave-in خفيف، من غير ما يثقّل الشعر', 'عبوة كبيرة 500 مل تكفي فترة طويلة'] },
+  { id: 'soon3', name: 'منتج جديد 3 — قريبًا', image: null, details: ['التفاصيل هتضاف قريب', 'من Karseell الأصلي'] }
+];
+
+const soonGrid = document.getElementById('soonGrid');
+if (soonGrid) {
+  const placeholderIcon = '<svg class="soon-placeholder-icon" viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a4 4 0 018 0v2"/></svg>';
+
+  SOON_PRODUCTS.forEach(function (p) {
+    const card = document.createElement('div');
+    card.className = 'soon-card';
+    card.setAttribute('data-soon', p.id);
+    card.innerHTML =
+      '<span class="soon-badge">قريبًا</span>' +
+      '<div class="soon-card-visual">' + (p.image ? '<img src="' + p.image + '" alt="' + p.name + '">' : placeholderIcon) + '</div>' +
+      '<h3>' + p.name + '</h3>' +
+      '<ul>' + p.details.map(function (d) { return '<li>' + d + '</li>'; }).join('') + '</ul>' +
+      '<button type="button" class="btn btn-outline btn-full choose-soon" data-soon="' + p.id + '">احجزي قبل الجميع</button>';
+    soonGrid.appendChild(card);
+  });
+
+  initSlider('soonGrid', 'soonPrev', 'soonNext', '.soon-card');
+
+  const soonProductField = document.getElementById('soonProductField');
+  const selectedSoonLabel = document.getElementById('selectedSoonLabel');
+  const allSoonCards = document.querySelectorAll('.soon-card');
+
+  function selectSoonProduct(id) {
+    const product = SOON_PRODUCTS.find(function (p) { return p.id === id; });
+    if (!product) return;
+    allSoonCards.forEach(function (c) { c.classList.remove('selected'); });
+    const card = document.querySelector('.soon-card[data-soon="' + id + '"]');
+    if (card) card.classList.add('selected');
+    soonProductField.value = product.name;
+    selectedSoonLabel.textContent = product.name;
+    document.getElementById('preorderForm').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  document.querySelectorAll('.choose-soon').forEach(function (btn) {
+    btn.addEventListener('click', function () { selectSoonProduct(btn.getAttribute('data-soon')); });
+  });
+
+  const preorderForm = document.getElementById('preorderForm');
+  const preorderFormMessage = document.getElementById('preorderFormMessage');
+
+  preorderForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    if (!soonProductField.value) {
+      preorderFormMessage.textContent = 'اختاري المنتج اللي عايزة تحجزيه الأول.';
+      preorderFormMessage.className = 'form-message error';
+      return;
+    }
+    if (!preorderForm.checkValidity()) {
+      preorderForm.reportValidity();
+      return;
+    }
+
+    const data = {
+      type: 'preorder',
+      product: soonProductField.value,
+      name: preorderForm.name.value.trim(),
+      phone: preorderForm.phone.value.trim(),
+      device: getDeviceType(),
+      timestamp: new Date().toISOString()
+    };
+
+    const payload = JSON.stringify(data);
+    let sent = false;
+    if (navigator.sendBeacon) {
+      const blob = new Blob([payload], { type: 'text/plain;charset=UTF-8' });
+      sent = navigator.sendBeacon(GOOGLE_SCRIPT_URL, blob);
+    }
+    if (!sent) {
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST', mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: payload
+      }).catch(function (err) { console.error('Failed to send pre-order:', err); });
+    }
+
+    preorderForm.reset();
+    soonProductField.value = '';
+    selectedSoonLabel.textContent = 'لسه ما اخترتيش';
+    allSoonCards.forEach(function (c) { c.classList.remove('selected'); });
+    preorderFormMessage.textContent = 'تم الحجز! هنكلّمك أول ما المنتج يوصل 🎉';
+    preorderFormMessage.className = 'form-message success';
+  });
+}
+
+// =====================================================================
+// Homepage review submission — sent to the sheet for manual moderation,
+// never published on the page automatically.
+// =====================================================================
+(function () {
+  const reviewForm = document.getElementById('reviewForm');
+  if (!reviewForm) return;
+
+  const reviewProductNames = {
+    mask: 'الماسك لوحده',
+    duo: 'الشامبو + البلسم',
+    full: 'الباقة الكاملة',
+    serum: 'سيروم زيت الأرجان',
+    general: 'تعليق عام على الصفحة'
+  };
+
+  const starBtns = document.querySelectorAll('#starRating .star-btn');
+  const reviewFormMessage = document.getElementById('reviewFormMessage');
+  let selectedStars = 0;
+
+  function paintStars(count) {
+    starBtns.forEach(function (btn) {
+      const n = parseInt(btn.getAttribute('data-star'), 10);
+      btn.classList.toggle('is-active', n <= count);
+    });
+  }
+
+  starBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      selectedStars = parseInt(btn.getAttribute('data-star'), 10);
+      paintStars(selectedStars);
+    });
+  });
+
+  reviewForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    if (selectedStars === 0) {
+      reviewFormMessage.textContent = 'من فضلك اختاري تقييمك بالنجوم الأول.';
+      reviewFormMessage.className = 'form-message error';
+      return;
+    }
+    if (!reviewForm.checkValidity()) {
+      reviewForm.reportValidity();
+      return;
+    }
+
+    const productId = reviewForm.reviewProduct.value;
+
+    const data = {
+      type: 'review',
+      product: productId,
+      productName: reviewProductNames[productId] || productId,
+      name: reviewForm.reviewerName.value.trim(),
+      email: reviewForm.reviewerEmail.value.trim(),
+      stars: selectedStars,
+      text: reviewForm.reviewText.value.trim(),
+      device: getDeviceType(),
+      timestamp: new Date().toISOString()
+    };
+
+    const payload = JSON.stringify(data);
+    let sent = false;
+    if (navigator.sendBeacon) {
+      const blob = new Blob([payload], { type: 'text/plain;charset=UTF-8' });
+      sent = navigator.sendBeacon(GOOGLE_SCRIPT_URL, blob);
+    }
+    if (!sent) {
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST', mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: payload
+      }).catch(function (err) { console.error('Failed to send review:', err); });
+    }
+
+    reviewForm.reset();
+    selectedStars = 0;
+    paintStars(0);
+    reviewFormMessage.textContent = 'شكرًا ليكِ! وصلنا تقييمك وهنراجعه قريب.';
+    reviewFormMessage.className = 'form-message success';
+  });
+})();

@@ -455,7 +455,7 @@ document.addEventListener('visibilitychange', function () {
 const SOON_PRODUCTS = [
   { id: 'soon1', name: 'ماسك الشعر البنفسجي', image: 'assets/soon-purple-mask.webp', details: ['يشيل الصفار ويرجّع البياض والفضي للشعر الفاتح', 'مخصص للشعر المفتوح أو المفروّد بس (مش للشعر الغامق)', 'يرطب ويقوي مع كل استخدام'] },
   { id: 'soon2', name: 'كريم تعريف الكيرلي', image: 'assets/soon-curl-cream.webp', details: ['بيعرّف الكيرلي والموجي ويقلل الهيشان', 'Leave-in خفيف، من غير ما يثقّل الشعر', 'عبوة كبيرة 500 مل تكفي فترة طويلة'] },
-  { id: 'soon3', name: 'منتج جديد 3 — قريبًا', image: null, details: ['التفاصيل هتضاف قريب', 'من Karseell الأصلي'] }
+  { id: 'soon3', name: 'ماسك الكولاجين — عبوة الكيس', image: 'assets/soon-collagen-pouch.webp', details: ['نفس تركيبة الكولاجين المركزة، في كيس عملي للسفر', 'مقفول من الهوا والضوء عشان التركيبة تفضل طازة', '500 مل، مناسب للمنزل والصالون'] }
 ];
 
 const soonGrid = document.getElementById('soonGrid');

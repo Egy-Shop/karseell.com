@@ -519,6 +519,7 @@ if (soonGrid) {
       product: soonProductField.value,
       name: preorderForm.name.value.trim(),
       phone: preorderForm.phone.value.trim(),
+      email: preorderForm.email.value.trim(),
       device: getDeviceType(),
       timestamp: new Date().toISOString()
     };

@@ -1033,6 +1033,7 @@ ul{ margin:0; padding:0; list-style:none; }
   border-radius: var(--radius, 14px);
   box-shadow: var(--shadow);
 }
+.preorder-form[hidden]{ display: none; }
 .preorder-sub{
   text-align:center;
   font-size: 13px;

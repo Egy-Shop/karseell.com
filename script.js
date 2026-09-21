@@ -471,7 +471,7 @@ if (soonGrid) {
       '<div class="soon-card-visual">' + (p.image ? '<img src="' + p.image + '" alt="' + p.name + '">' : placeholderIcon) + '</div>' +
       '<h3>' + p.name + '</h3>' +
       '<ul>' + p.details.map(function (d) { return '<li>' + d + '</li>'; }).join('') + '</ul>' +
-      '<button type="button" class="btn btn-primary btn-full choose-soon" data-soon="' + p.id + '">احجزي قبل الجميع</button>';
+      '<button type="button" class="btn btn-primary btn-full choose-soon" data-soon="' + p.id + '">Pre-order with 22% off</button>';
     soonGrid.appendChild(card);
   });
 

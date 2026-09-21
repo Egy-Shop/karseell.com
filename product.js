@@ -131,7 +131,7 @@ const PRODUCTS = {
   },
 
   duo: {
-    name: 'طقم شامبو وبلسم بالكولاجين',
+    name: 'دويتو الشامبو والبلسم بالكولاجين',
     eyebrow: 'الأكثر طلبًا',
     price: 699,
     oldPrice: 2345,
@@ -175,7 +175,7 @@ const PRODUCTS = {
   },
 
   full: {
-    name: 'الباقة الكاملة (ماسك + شامبو + بلسم)',
+    name: 'المجموعة الكاملة (ماسك + شامبو + بلسم)',
     eyebrow: 'الأكثر توفيرًا',
     price: 1199,
     oldPrice: 3613,
@@ -204,7 +204,7 @@ const PRODUCTS = {
       { name: 'كيراتين محلل', desc: 'يساعد على تنعيم الشعر المسامي والتالف' }
     ],
     faq: [
-      { q: 'إزاي أستخدم الباقة الكاملة كروتين واحد؟', a: 'الشامبو والبلسم للاستخدام اليومي أو يوم بعد يوم، والماسك مرة أو مرتين أسبوعيًا كعلاج مكثف إضافي.' },
+      { q: 'إزاي أستخدم المجموعة الكاملة كروتين واحد؟', a: 'الشامبو والبلسم للاستخدام اليومي أو يوم بعد يوم، والماسك مرة أو مرتين أسبوعيًا كعلاج مكثف إضافي.' },
       { q: 'ليه أشتري الباقة بدل ما أجرب منتج واحد؟', a: 'المنتجات الثلاثة مصممة تكمّل بعض: تنظيف وترطيب يومي بالشامبو والبلسم، وترميم عميق أسبوعي بالماسك، فبتاخدي روتين متكامل بدل ما تجمعي منتجات من ماركات مختلفة.' },
       { q: 'هل الباقة مناسبة للشعر المصبوغ؟', a: 'أيوه، الثلاث منتجات آمنة على الشعر المصبوغ والمعالج كيميائيًا.' },
       { q: 'هفضل أشوف فرق بعد قد إيه؟', a: 'غالبًا بتلاحظي فرق في الملمس من أول أسبوعين، والنتيجة الكاملة بتظهر مع الاستمرار لشهر تقريبًا.' },
@@ -284,6 +284,40 @@ let abandonedSent = false;
 // ---- Render static product content ----
 document.getElementById('pageTitle').textContent = 'Karseell | ' + product.name;
 document.getElementById('pageDescription').setAttribute('content', product.desc);
+
+const productUrl = 'https://egy-shop.github.io/karseell.com/product.html?id=' + productId;
+const productImageUrl = 'https://egy-shop.github.io/karseell.com/' + product.images[0];
+const seoTitle = 'Karseell | ' + product.name;
+document.getElementById('pageCanonical').setAttribute('href', productUrl);
+document.getElementById('ogUrl').setAttribute('content', productUrl);
+document.getElementById('ogTitle').setAttribute('content', seoTitle);
+document.getElementById('ogDescription').setAttribute('content', product.desc);
+document.getElementById('ogImage').setAttribute('content', productImageUrl);
+document.getElementById('twitterTitle').setAttribute('content', seoTitle);
+document.getElementById('twitterDescription').setAttribute('content', product.desc);
+document.getElementById('twitterImage').setAttribute('content', productImageUrl);
+
+// Structured data for this specific product (helps Google show price/availability in search results)
+if (product.inStock) {
+  const ldScript = document.createElement('script');
+  ldScript.type = 'application/ld+json';
+  ldScript.textContent = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    image: productImageUrl,
+    description: product.desc,
+    brand: { '@type': 'Brand', name: 'Karseell' },
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'EGP',
+      price: String(product.price),
+      availability: 'https://schema.org/InStock',
+      url: productUrl
+    }
+  });
+  document.head.appendChild(ldScript);
+}
 document.getElementById('productEyebrow').textContent = product.eyebrow;
 document.getElementById('productName').textContent = product.name;
 document.getElementById('productRatingText').textContent = product.ratingText;
